@@ -29,7 +29,7 @@ instance.interceptors.response.use(
 )
 
 export const lazyRequest = <Arg = any>(request: Promise<Arg>, delay = 1000) => {
-  const lazy = new Promise<any>(resolve => setTimeout(resolve, delay));
+  const lazy = new Promise(resolve => setTimeout(resolve, delay));
 
   return Promise<Arg>.all([request, lazy])
 }

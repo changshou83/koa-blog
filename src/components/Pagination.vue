@@ -1,7 +1,7 @@
 <script lang='ts' setup>
 import { watchEffect } from 'vue';
 
-import { useWindowScrollTo } from '@/utils/windowScrollTo';
+import { windowScrollTo } from '@/utils/windowScrollTo';
 import { routeParamsChange } from '@/utils/route/routeParamsChange';
 import { useLinkedRouteParam } from '@/composables/utils/useLinkedRouteParam';
 
@@ -18,7 +18,7 @@ const emits = defineEmits<{
 }>()
 watchEffect(() => {
   emits('change', curr.value as number)
-  if(needScroll) useWindowScrollTo({top: 0}, 'auto')
+  if(needScroll) windowScrollTo({top: 0}, 'auto')
 })
 
 const pageNumChange = routeParamsChange('pageNum')

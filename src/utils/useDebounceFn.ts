@@ -8,12 +8,12 @@ import { FunctionArgs } from '@/types'
  */
 export const useDebounceFn = <T extends FunctionArgs>(
   cb: T,
-  delay: number
+  delay?: number
 ): T => {
   let timeoutId: ReturnType<typeof setTimeout> | undefined = undefined;
   function wrapper(this: any, ...args: any[]): void {
     if (timeoutId) clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => cb.apply(this, args), delay);
+    timeoutId = setTimeout(() => cb.apply(this, args), delay || 1000);
   }
 
   return wrapper as any as T;

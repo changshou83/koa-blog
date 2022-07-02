@@ -51,9 +51,6 @@ export interface GroupItem {
 // ViewHeader 组件的按钮组
 export type ButtonGroupItem = Pick<GroupItem, 'icon' | 'text' | 'handle'>
 
-// 外链跳转支持的一些域名
-export type ProvideDomain = 'github';
-
 export interface DomainOptions {
   url: string;
   paramsHandle?: (params: string[], value: Record<string, string>) => string;

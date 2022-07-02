@@ -6,13 +6,13 @@ import { useLinkedRouteParam } from '@/composables/utils/useLinkedRouteParam';
 
 import { Alert } from 'ant-design-vue';
 import { CommentOutlined } from '@ant-design/icons-vue';
-import { useWindowScrollTo } from '@/utils/windowScrollTo';
+import { windowScrollTo } from '@/utils/windowScrollTo';
 
 // 加载CSS文件
 import '@wangeditor/editor/dist/css/style.css';
 import { ArticleInfo } from '@/types';
 
-useWindowScrollTo({ top: 0 }, 'auto')
+windowScrollTo({ top: 0 }, 'auto')
 const Message = useMessage();
 const id = useLinkedRouteParam('id');
 const article = ref<ArticleInfo>({
