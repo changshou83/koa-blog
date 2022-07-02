@@ -1,6 +1,6 @@
 <script lang='ts' setup>
 import { RouterView } from 'vue-router';
-import ViewHeader from '@/blocks/ViewHeader.vue';
+import ViewHeader from '@/components/ViewHeader.vue';
 </script>
 <script lang="ts">
 import { showIndexConfig } from '@/view-provider/show/showIndexView';

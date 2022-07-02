@@ -13,7 +13,7 @@ import { routePathToPage } from '@/utils/route/routePathToPage';
 import { useMessage } from '@/composables/core/useMessage';
 import { useLocalStorage } from '@/composables/useLocalStorage';
 
-import PublishModal from '@/blocks/PublishModal.vue';
+import PublishModal from '@/components/PublishModal.vue';
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue';
 
 import { FunctionArgs, EditorForm, ArticleInfo, ResponseConfig } from '@/types';

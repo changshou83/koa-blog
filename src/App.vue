@@ -4,7 +4,7 @@ import zhCN from 'ant-design-vue/es/locale/zh_CN';
 import { UpOutlined } from '@ant-design/icons-vue';
 import { ConfigProvider, BackTop } from 'ant-design-vue';
 
-import Header from '@/blocks/Header.vue';
+import Header from '@/components/Header.vue';
 import { appViewConfig } from '@/view-provider/app';
 </script>
 

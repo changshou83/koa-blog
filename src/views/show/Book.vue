@@ -7,7 +7,7 @@ import { useMessage } from '@/composables/core/useMessage';
 import { routePathToPage } from '@/utils/route/routePathToPage';
 import { useLinkedRouteParam } from '@/composables/utils/useLinkedRouteParam';
 
-import CardList from '@/blocks/CardList.vue';
+import CardList from '@/components/CardList.vue';
 import CPagination from '@/components/Pagination.vue';
 
 const { cardRecords, total, limit } = bookViewConfig
