@@ -60,17 +60,17 @@ describe('http', () => {
 
 describe('lazyRequest', () => {
   beforeEach(() => {
-    vitest.useFakeTimers()
+    vi.useFakeTimers()
   })
 
   it('it should work', async () => {
     setup('success')
 
-    const fn = vitest.fn(([res]) => res)
+    const fn = vi.fn(([res]) => res)
     const promise = lazyRequest(http.get('/test'), 1000).then(res => fn(res))
     
     expect(fn).not.toBeCalled()
-    vitest.advanceTimersByTime(1000)
+    vi.advanceTimersByTime(1000)
     
     const res = await promise
     expect(fn).toBeCalled()
