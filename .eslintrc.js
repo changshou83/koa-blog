@@ -1,0 +1,3 @@
+module.expoers = {
+  "extends": "@antfu"
+}
