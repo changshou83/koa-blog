@@ -1,3 +1,4 @@
+import { createPinia } from 'pinia';
 import { Plugin, App } from 'vue';
 import router from '@/routes/index';
 import {
@@ -11,7 +12,7 @@ import {
   Pagination,
 } from 'ant-design-vue';
 
-const plugins: Plugin[] = [router];
+const plugins: Plugin[] = [router, createPinia()];
 const componentsPlugins: Plugin[] = [
   Tag,
   Card,

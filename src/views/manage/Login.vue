@@ -1,5 +1,5 @@
 <script lang='ts' setup>
-import { Login } from '@/model/user';
+import { useUserStore } from "@/store/user"
 import { reactive, computed } from 'vue';
 import { routePathToPage } from '@/utils/route/routePathToPage';
 import { useMessage } from '@/composables/core/useMessage';
@@ -11,6 +11,7 @@ import type { FormProps } from 'ant-design-vue';
 import type { Rule } from 'ant-design-vue/es/form';
 import { LoginForm } from '@/types';
 
+const user = useUserStore();
 const formState = reactive<LoginForm>({
   username: '',
   password: '',
@@ -43,14 +44,12 @@ const Message = useMessage();
 const toArticlePage = routePathToPage('/manage/articles/1')
 const handleSubmit: FormProps['onSubmit'] = async () => {
   try {
-    const result = await Login(formState)
-    if(result) {
-      Message.success({
-        message: '登录成功',
-        duration: 0.5
-      })
-      setTimeout(toArticlePage, 1000)
-    }
+    await user.login(formState)
+    Message.success({
+      message: '登录成功',
+      duration: 0.5
+    })
+    setTimeout(toArticlePage, 1000)
   } catch(err: any) {
     formState.password = '';
     Message.error({
