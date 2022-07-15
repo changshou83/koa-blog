@@ -18,6 +18,7 @@ export interface ArticleInfo {
   content?: string;
   updatedAt?: string;
   createdAt?: string;
+  headImg?: string;
   articleType: ArticleType;
 }
 

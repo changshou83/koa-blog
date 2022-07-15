@@ -17,9 +17,9 @@ export async function Index(params: PaginationConfig, delay?: number) {
   }
 }
 
-export async function Show(id: number) {
+export async function Show(id: number, delay?: number) {
   try {
-    const { data } = await articleShow(id)
+    const [{ data }] = await lazyRequest(articleShow(id), delay)
     return Promise.resolve(data)
   } catch(err) {
     return Promise.reject(err)
