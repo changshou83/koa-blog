@@ -1,4 +1,3 @@
-import { defineComponent } from 'vue';
 import { ButtonGroupItem } from '@/types';
 
 export const createButtonGroup = (group: ButtonGroupItem[] = []) => {

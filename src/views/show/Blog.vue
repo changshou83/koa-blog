@@ -2,10 +2,6 @@
 import { blogViewConfig } from '@/view-provider/show/blog';
 
 import { Index } from '@/model/articles';
-import { watchEffect } from 'vue';
-import { useMessage } from '@/composables/core/useMessage';
-import { routePathToPage } from '@/utils/route/routePathToPage';
-import { useLinkedRouteParam } from '@/composables/utils/useLinkedRouteParam';
 
 import CardList from '@/components/CardList.vue';
 import CPagination from '@/components/Pagination.vue';
@@ -13,7 +9,7 @@ import CPagination from '@/components/Pagination.vue';
 const { cardRecords, total, limit } = blogViewConfig
 const pageNum = useLinkedRouteParam('pageNum', true)
 watchEffect(() => {
-  Index({ page: pageNum.value as number, limit: limit.value = 1 }, 300)
+  Index({ page: pageNum.value as number, limit: limit.value || 1 , type: 'blog' }, 300)
     .then((data) => {
       if(data) {
         cardRecords.value = data.rows

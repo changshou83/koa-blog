@@ -1,7 +1,6 @@
 <script lang='ts' setup>
 import { Avatar, GroupItem } from '@/types';
 import { PageHeader } from 'ant-design-vue';
-import { useWindowScrollStatus } from '@/composables/event/useWindowScrollStatus';
 
 export interface HeaderConfig {
   avatar: Avatar;

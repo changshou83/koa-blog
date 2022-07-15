@@ -3,15 +3,7 @@ import '@wangeditor/editor/dist/css/style.css';
 import { xssFilterOptions, clearConfirm } from '@/view-provider/manage/editor';
 
 import xss from 'xss';
-import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
 import { Show, Create, Update } from '@/model/articles';
-import { useEditor } from '@/composables/useEditor';
-import { useLoading } from '@/composables/utils/useLoading';
-import { useDebounceFn } from '@/utils/useDebounceFn';
-import { routePathToPage } from '@/utils/route/routePathToPage';
-import { useMessage } from '@/composables/core/useMessage';
-import { useLocalStorage } from '@/composables/useLocalStorage';
 
 import PublishModal from '@/components/PublishModal.vue';
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue';

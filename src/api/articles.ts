@@ -1,5 +1,4 @@
 import { ArticleInfo, ResponseConfig, PaginationConfig, ListConfig, fileRecordConfig } from "@/types";
-import http from '@/utils/http';
 
 /**
  * 创建文章

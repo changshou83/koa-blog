@@ -1,7 +1,5 @@
 import routes from './routes';
 import { AppRouteMetaConfig } from '@/types';
-import { getToken } from '@/utils/common/cache';
-import { useMessage } from '@/composables/core/useMessage';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
 const router = createRouter({

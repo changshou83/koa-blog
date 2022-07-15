@@ -1,10 +1,4 @@
 <script lang='ts' setup>
-import { watchEffect } from 'vue';
-
-import { windowScrollTo } from '@/utils/windowScrollTo';
-import { routeParamsChange } from '@/utils/route/routeParamsChange';
-import { useLinkedRouteParam } from '@/composables/utils/useLinkedRouteParam';
-
 interface PaginationProp {
   total?: number,
   pageSize?: number,

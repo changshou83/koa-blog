@@ -1,12 +1,7 @@
 <script lang='ts' setup>
 import { Show } from '@/model/articles';
-import { ref, watchEffect } from 'vue';
-import { useMessage } from '@/composables/core/useMessage';
-import { useLinkedRouteParam } from '@/composables/utils/useLinkedRouteParam';
 
-import { Alert } from 'ant-design-vue';
 import { CommentOutlined } from '@ant-design/icons-vue';
-import { windowScrollTo } from '@/utils/windowScrollTo';
 
 // 加载CSS文件
 import '@wangeditor/editor/dist/css/style.css';

@@ -1,5 +1,6 @@
 <script lang='ts' setup>
 import { CardItem } from '@/types';
+
 defineProps<{
   cardRecords: CardItem[]
 }>()
@@ -18,7 +19,7 @@ const checkDetail = (id: number) => emit('checkDetail', id)
       :extra="record.createdAt"
       v-for="record of cardRecords"
       :key="record.id"
-      @click="checkDetail(record.id)"
+      @click="checkDetail(record.id!)"
     >
       {{record.intro}}
     </a-card>

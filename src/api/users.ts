@@ -1,5 +1,4 @@
 import { UserInfo, LoginForm, ResponseConfig } from '@/types';
-import http from '@/utils/http';
 
 /**
  * 用户登录

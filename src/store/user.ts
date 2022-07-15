@@ -1,7 +1,5 @@
-import { defineStore } from "pinia";
 import { Login } from '@/model/user';
 import { LoginForm } from '@/types';
-import { setToken } from "@/utils/common/cache";
 
 export const useUserStore = defineStore('user', {
   state: () => ({

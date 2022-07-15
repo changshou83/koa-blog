@@ -1,6 +1,7 @@
 import axios, { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import { baseURL } from '@/api/config';
 import { getToken } from './common/cache';
+import { STATUS_CODES } from 'http';
 
 const instance = axios.create({
   timeout: 10000,
@@ -19,7 +20,8 @@ instance.interceptors.request.use((config: AxiosRequestConfig) => {
 instance.interceptors.response.use(
   (res: AxiosResponse) => {
     const { status, data } = res
-    if(status === 200) {
+    const validCode = [200, 201, 204];
+    if(validCode.includes(status)) {
       return Promise.resolve(data)
     } else {
       return Promise.reject(data)

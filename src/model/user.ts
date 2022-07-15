@@ -1,4 +1,3 @@
-import { userLogin } from "@/api/users"
 import { LoginForm } from "@/types"
 
 export async function Login(params: LoginForm) {

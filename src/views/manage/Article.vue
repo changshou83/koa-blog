@@ -1,11 +1,6 @@
 <script lang='ts' setup>
 import { Index, Delete } from '@/model/articles';
-import { ref, watchEffect, Ref } from 'vue';
-import { useLoading } from '@/composables/utils/useLoading';
-import { routePathToPage } from '@/utils/route/routePathToPage';
-import { useMessage } from '@/composables/core/useMessage';
-import { routeParamsChange } from '@/utils/route/routeParamsChange';
-import { useLinkedRouteParam } from '@/composables/utils/useLinkedRouteParam';
+import { Ref } from 'vue';
 import { columns, colorMap, paginationConfig } from '@/view-provider/manage/article';
 
 import { Table as CTable, TablePaginationConfig } from 'ant-design-vue';

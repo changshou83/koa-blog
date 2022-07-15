@@ -1,9 +1,6 @@
 <script lang='ts' setup>
 import { Archive } from '@/model/articles';
-import { ref, watchEffect } from 'vue';
-import { useMessage } from '@/composables/core/useMessage';
 import { getRandomColor } from '@/utils/common/getRandomColor';
-import { routePathToPage } from '@/utils/route/routePathToPage';
 
 import { fileRecordConfig } from '@/types';
 

@@ -1,8 +1,4 @@
 <script lang='ts' setup>
-import { computed } from 'vue';
-import { routePathToPage } from '@/utils/route/routePathToPage';
-import { useCurrRouteOnHideList } from '@/composables/utils/useCurrRouteOnHideList';
-
 import { PageHeader } from 'ant-design-vue';
 import { LeftSquareOutlined } from '@ant-design/icons-vue';
 

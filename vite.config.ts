@@ -1,6 +1,9 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
+import AutoImport from 'unplugin-auto-import/vite'
+import { AntDesignVueResolver as AntDV } from 'unplugin-vue-components/resolvers'
 import {
   createStyleImportPlugin,
   AndDesignVueResolve,
@@ -10,7 +13,36 @@ import { fileURLToPath, URL } from 'url';
 
 export default defineConfig({
   plugins: [
+    vue({
+      reactivityTransform: true, // 开启prop默认值
+    }),
     vueJsx(),
+    AutoImport({
+      include: [
+        /\.[tj]sx?$/,
+        /\.vue$/, /\.vue\?vue/,
+      ],
+      imports: [
+        'vue',
+        'vue-router',
+        'pinia'
+      ],
+      dirs: [
+        'src/composables',
+        'src/composables/core',
+        'src/composables/event',
+        'src/composables/utils',
+        'src/utils',
+        'src/utils/common',
+        'src/utils/route',
+        'src/api',
+      ],
+      dts: 'src/auto-import.d.ts',
+      vueTemplate: true,
+      resolvers: [
+        AntDV()
+      ]
+    }),
     // 按需加载
     createStyleImportPlugin({
       resolves: [AndDesignVueResolve()],
@@ -28,9 +60,6 @@ export default defineConfig({
           libraryNameChangeCase: 'paramCase',
         },
       ],
-    }),
-    vue({
-      reactivityTransform: true, // 开启prop默认值
     }),
     visualizer()
   ],

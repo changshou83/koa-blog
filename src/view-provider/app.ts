@@ -24,6 +24,10 @@ export const appViewConfig = {
       handle: routePathToPage('/show/blogs/1'),
     },
     {
+      text: '管理',
+      handle: routePathToPage('/manage/articles/1'),
+    },
+    {
       text: '创作',
       handle: routePathToPage('/manage/editor'),
     },

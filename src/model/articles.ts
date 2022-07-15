@@ -1,6 +1,4 @@
-import { lazyRequest } from '@/utils/http';
 import { ArticleInfo, PaginationConfig, ResponseConfig } from '@/types'
-import { articleArchive, articleCreate, articleDelete, articleIndex, articleShow, articleUpdate } from '@/api/articles'
 
 export async function Create(params: ArticleInfo, delay?: number) {
   try {
@@ -37,8 +35,8 @@ export async function Update(id: number, params: ArticleInfo, delay?: number) {
 }
 export async function Delete(id: number) {
   try {
-    const { data } = await articleDelete(id)
-    return Promise.resolve(data)
+    await articleDelete(id)
+    return Promise.resolve()
   } catch(err) {
     return Promise.reject(err)
   }
