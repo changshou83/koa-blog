@@ -71,7 +71,6 @@ const handlers = [
   }),
   // 获取文章列表 - index
   rest.get("http://localhost:3000/api/articles", async (req, res, ctx) => {
-    console.log(MockData.getAllData())
     const response: ResponseConfig<ListConfig<ArticleInfo>> = {
       status: 200,
       msg: 'success',

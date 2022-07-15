@@ -16,16 +16,16 @@ beforeEach(async () => {
 });
 
 describe('Manage Articles', () => {
-  // it('show article list', async () => {
-  //   render(Article, {
-  //     global: {
-  //       plugins: [router],
-  //     }
-  //   });
+  it('show article list', async () => {
+    render(Article, {
+      global: {
+        plugins: [router],
+      }
+    });
 
-  //   const createdAt = await screen.findByText('2022-06-20-13:51')
-  //   expect(createdAt.innerHTML).toBe("<!---->2022-06-20-13:51<!---->")
-  // })
+    const createdAt = await screen.findByText('2022-06-20-13:51')
+    expect(createdAt.innerHTML).toBe("<!---->2022-06-20-13:51<!---->")
+  })
 
   it('can delete article - TODO', async () => {
     expect(1).toBe(1)

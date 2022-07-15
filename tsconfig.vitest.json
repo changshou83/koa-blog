@@ -4,6 +4,7 @@
   "compilerOptions": {
     "composite": true,
     "lib": [],
+    "jsx": "preserve",
     "types": ["node", "jsdom", "vitest/globals"],
     "baseUrl": ".",
     "paths": {
