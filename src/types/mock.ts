@@ -23,10 +23,10 @@ export interface ArticleInfo {
 }
 
 // CardList 组件的Item所需数据
-export type CardItem = Pick<ArticleInfo, 'id' | 'title' | 'createdAt' | 'intro'>
+export type CardItem = Pick<ArticleInfo, 'id' | 'title' | 'createdAt' | 'intro' | 'headImg'>
 
 // 上传及发布文章时的表单数据
-export type EditorForm = Pick<ArticleInfo, 'title' | 'intro' | 'articleType'> 
+export type EditorForm = Pick<ArticleInfo, 'title' | 'intro' | 'articleType' | 'headImg'> 
 
 export interface LoginForm {
   username: string;

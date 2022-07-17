@@ -19,7 +19,7 @@ export default {
         <button-group></button-group>
       </template>
     </view-header>
-    <router-view v-slot="{ Component }">
+    <router-view key="ShowView" v-slot="{ Component }">
       <transition name="fade" mode="out-in">
         <component :is="Component" />
       </transition>

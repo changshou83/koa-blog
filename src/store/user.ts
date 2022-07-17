@@ -21,7 +21,9 @@ export const useUserStore = defineStore('user', {
         username: '',
         token: '',
         id: 1
-      })
+      });
+      removeToken();
+      routePathToPage('/manage/login');
     },
     async login(formState: LoginForm) {
       const result = await Login(formState)

@@ -12,7 +12,7 @@ import { appViewConfig } from '@/view-provider/app';
   <config-provider :locale="zhCN">
     <Header v-bind="appViewConfig"/>
     <back-top class="back-top"><up-outlined /></back-top>
-    <router-view />
+    <router-view key="AppView"/>
   </config-provider>
 </template>
 

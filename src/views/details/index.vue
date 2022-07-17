@@ -20,7 +20,7 @@ const article = ref<ArticleInfo>({
 });
 
 const [loading, getArticleInfo] = useLoading(() =>
-  Show(Number(id.value), 2000)
+  Show(Number(id.value), 1500)
     .then((data) => {
       if(data) {
         Object.keys(article.value).forEach(k  => {
@@ -89,7 +89,7 @@ watchEffect(() => {
   background-color: rgba(190,190,190,0.2);
   margin-bottom: 20px;
 }
-.details /deep/ .ant-skeleton-image {
+:deep(.ant-skeleton-image) {
   background-color: transparent;
 }
 .title {
