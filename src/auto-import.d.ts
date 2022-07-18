@@ -4,6 +4,7 @@ declare global {
   const EffectScope: typeof import('vue')['EffectScope']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
   const addDomain: typeof import('./utils/route/urlToExternalLink')['addDomain']
+  const addWaterMark: typeof import('./utils/addWaterMark')['addWaterMark']
   const articleArchive: typeof import('./api/articles')['articleArchive']
   const articleCreate: typeof import('./api/articles')['articleCreate']
   const articleDelete: typeof import('./api/articles')['articleDelete']
@@ -61,6 +62,7 @@ declare global {
   const routeNameToPage: typeof import('./utils/route/routeNameToPage')['routeNameToPage']
   const routeParamsChange: typeof import('./utils/route/routeParamsChange')['routeParamsChange']
   const routePathToPage: typeof import('./utils/route/routePathToPage')['routePathToPage']
+  const scale: typeof import('./utils/scale')['scale']
   const setActivePinia: typeof import('pinia')['setActivePinia']
   const setMapStoreSuffix: typeof import('pinia')['setMapStoreSuffix']
   const setToken: typeof import('./utils/common/cache')['setToken']
@@ -110,6 +112,7 @@ declare module '@vue/runtime-core' {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
     readonly addDomain: UnwrapRef<typeof import('./utils/route/urlToExternalLink')['addDomain']>
+    readonly addWaterMark: UnwrapRef<typeof import('./utils/addWaterMark')['addWaterMark']>
     readonly articleArchive: UnwrapRef<typeof import('./api/articles')['articleArchive']>
     readonly articleCreate: UnwrapRef<typeof import('./api/articles')['articleCreate']>
     readonly articleDelete: UnwrapRef<typeof import('./api/articles')['articleDelete']>
@@ -167,6 +170,7 @@ declare module '@vue/runtime-core' {
     readonly routeNameToPage: UnwrapRef<typeof import('./utils/route/routeNameToPage')['routeNameToPage']>
     readonly routeParamsChange: UnwrapRef<typeof import('./utils/route/routeParamsChange')['routeParamsChange']>
     readonly routePathToPage: UnwrapRef<typeof import('./utils/route/routePathToPage')['routePathToPage']>
+    readonly scale: UnwrapRef<typeof import('./utils/scale')['scale']>
     readonly setActivePinia: UnwrapRef<typeof import('pinia')['setActivePinia']>
     readonly setMapStoreSuffix: UnwrapRef<typeof import('pinia')['setMapStoreSuffix']>
     readonly setToken: UnwrapRef<typeof import('./utils/common/cache')['setToken']>

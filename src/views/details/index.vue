@@ -23,9 +23,9 @@ const [loading, getArticleInfo] = useLoading(() =>
   Show(Number(id.value), 1500)
     .then((data) => {
       if(data) {
-        Object.keys(article.value).forEach(k  => {
-          if(data[k]) article.value[k] = data[k]
-        })
+        article.value = {
+          ...data
+        }
       }
     })
     .catch((err) => {
@@ -71,7 +71,7 @@ watchEffect(() => {
 }
 .head-img {
   width: 100%;
-  height: 250px;
+  height: 300px;
   object-fit: cover;
   position: absolute;
   left: 0;
@@ -93,14 +93,14 @@ watchEffect(() => {
   background-color: transparent;
 }
 .title {
-  margin-top: 250px;
+  margin-top: 300px;
   height: 80px;
   text-align: left;
   font-weight: bold;
   font-size: 2.8em;
 }
 .type {
-  margin-top: 270px;
+  margin-top: 320px;
   position: absolute;
   top: 10px;
   right: 10px;

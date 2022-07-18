@@ -22,17 +22,12 @@ const rules = ref<Record<string, Rule[]>>({
     required: true,
     message: "简介为必填"
   }],
-  headImg: [{
-    required: true,
-    message: "必须上传头图"
-  }],
 })
 const { validateInfos } = Form.useForm(formState, rules)
 const canPublish = computed(() => {
   const status = [
     validateInfos.title.validateStatus,
     validateInfos.intro.validateStatus,
-    validateInfos.headImg.validateStatus,
   ].every(status => status === 'success')
 
   return status
@@ -58,7 +53,7 @@ const Message = useMessage();
 const fileList = ref<UploadProps['fileList']>([]);
 const uploaded = ref(false);
 
-async function beforeUpload(file: any) {
+const beforeUpload: UploadProps['beforeUpload'] = file => {
   // 限制大小
   const isLt2M = file.size! < 2 * 1024 * 1024;
   if (!isLt2M) {
@@ -68,9 +63,9 @@ async function beforeUpload(file: any) {
     });
   }
   if(!isLt2M) return Promise.reject();
-  // TODO:加水印
 
-  return Promise.resolve();
+  // 加水印，这水印加了但是看不着，调整一下图片样式
+  return new Promise((resolve) => addWaterMark(file, resolve as BlobCallback));
 }
 
 const onFilesAdded = (info: UploadChangeParam) => {
@@ -123,7 +118,7 @@ const uploadToQiNiu = (options: any) => {
             <template #prefix><ContainerOutlined style="color: rgba(0, 0, 0, 0.25)" /></template>
           </a-input>
         </a-form-item>
-        <a-form-item name="upload" label="文章头图" extra="一旦上传，只可在更新时可修改" v-bind="validateInfos.headImg">
+        <a-form-item name="upload" label="文章头图" extra="一旦上传，只可在更新时可修改">
           <Upload
             accept="image/png, image/jpeg"
             list-type="picture"
