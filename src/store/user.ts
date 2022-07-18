@@ -22,7 +22,6 @@ export const useUserStore = defineStore('user', {
         token: '',
         id: 1
       });
-      removeToken();
       routePathToPage('/manage/login');
     },
     async login(formState: LoginForm) {
@@ -30,7 +29,6 @@ export const useUserStore = defineStore('user', {
       
       if(typeof result === 'object') {
         this.$patch(result);
-        result.token && setToken(result.token);
       }
     }
   }

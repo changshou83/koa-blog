@@ -1,6 +1,6 @@
 import axios, { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import { baseURL } from '@/api/config';
-import { getToken } from './common/cache';
+import { useUserStore } from '@/store/user';
 
 const instance = axios.create({
   timeout: 10000,
@@ -9,8 +9,8 @@ const instance = axios.create({
 
 // 请求拦截
 instance.interceptors.request.use((config: AxiosRequestConfig) => {
-  const token = getToken()
-  token && (config.headers!.authorization = `Bearer ${token}`)
+  const user = useUserStore()
+  user.token && (config.headers!.authorization = user.authorization)
 
   return config;
 }, (err: AxiosError) =>  Promise.reject(err))
