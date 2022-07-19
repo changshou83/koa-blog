@@ -1,6 +1,7 @@
 <script lang='ts' setup>
 import { Show } from '@/model/articles';
 
+import Catalog from "@/components/Catalog.vue";
 import { Alert, Skeleton } from 'ant-design-vue';
 import { CommentOutlined } from '@ant-design/icons-vue';
 
@@ -58,13 +59,14 @@ watchEffect(() => {
       <main v-html="article.content" class="content"></main>
     </Skeleton>
   </main>
+  <Catalog :content="article.content" />
 </template>
 
 <style scoped>
 .details {
   margin: 20px;
-  margin-left: 18vw;
-  margin-right: 28vw;
+  margin-left: 15vw;
+  margin-right: 30vw;
   padding: 20px;
   background-color: #fff;
   border-radius: 4px;

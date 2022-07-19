@@ -10,8 +10,8 @@ import { LoginForm } from '@/types';
 
 const user = useUserStore();
 const formState = reactive<LoginForm>({
-  username: '',
-  password: '',
+  username: 'changshou83',
+  password: 'Dm20020601@',
 });
 
 const rules = reactive<Record<string, Rule[]>>({
