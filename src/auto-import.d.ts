@@ -23,7 +23,9 @@ declare global {
   const getActivePinia: typeof import('pinia')['getActivePinia']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
+  const getPiniaState: typeof import('./utils/common/cache')['getPiniaState']
   const getRandomColor: typeof import('./utils/common/getRandomColor')['getRandomColor']
+  const getToken: typeof import('./utils/common/cache')['getToken']
   const h: typeof import('vue')['h']
   const http: typeof import('./utils/http')['default']
   const inject: typeof import('vue')['inject']
@@ -56,6 +58,7 @@ declare global {
   const reactive: typeof import('vue')['reactive']
   const readonly: typeof import('vue')['readonly']
   const ref: typeof import('vue')['ref']
+  const removeToken: typeof import('./utils/common/cache')['removeToken']
   const resolveComponent: typeof import('vue')['resolveComponent']
   const routeNameToPage: typeof import('./utils/route/routeNameToPage')['routeNameToPage']
   const routeParamsChange: typeof import('./utils/route/routeParamsChange')['routeParamsChange']
@@ -63,6 +66,8 @@ declare global {
   const scale: typeof import('./utils/scale')['scale']
   const setActivePinia: typeof import('pinia')['setActivePinia']
   const setMapStoreSuffix: typeof import('pinia')['setMapStoreSuffix']
+  const setPiniaState: typeof import('./utils/common/cache')['setPiniaState']
+  const setToken: typeof import('./utils/common/cache')['setToken']
   const shallowReactive: typeof import('vue')['shallowReactive']
   const shallowReadonly: typeof import('vue')['shallowReadonly']
   const shallowRef: typeof import('vue')['shallowRef']
@@ -128,7 +133,9 @@ declare module '@vue/runtime-core' {
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
+    readonly getPiniaState: UnwrapRef<typeof import('./utils/common/cache')['getPiniaState']>
     readonly getRandomColor: UnwrapRef<typeof import('./utils/common/getRandomColor')['getRandomColor']>
+    readonly getToken: UnwrapRef<typeof import('./utils/common/cache')['getToken']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly http: UnwrapRef<typeof import('./utils/http')['default']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
@@ -161,6 +168,7 @@ declare module '@vue/runtime-core' {
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
+    readonly removeToken: UnwrapRef<typeof import('./utils/common/cache')['removeToken']>
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
     readonly routeNameToPage: UnwrapRef<typeof import('./utils/route/routeNameToPage')['routeNameToPage']>
     readonly routeParamsChange: UnwrapRef<typeof import('./utils/route/routeParamsChange')['routeParamsChange']>
@@ -168,6 +176,8 @@ declare module '@vue/runtime-core' {
     readonly scale: UnwrapRef<typeof import('./utils/scale')['scale']>
     readonly setActivePinia: UnwrapRef<typeof import('pinia')['setActivePinia']>
     readonly setMapStoreSuffix: UnwrapRef<typeof import('pinia')['setMapStoreSuffix']>
+    readonly setPiniaState: UnwrapRef<typeof import('./utils/common/cache')['setPiniaState']>
+    readonly setToken: UnwrapRef<typeof import('./utils/common/cache')['setToken']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>

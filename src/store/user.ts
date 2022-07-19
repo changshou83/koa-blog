@@ -17,11 +17,7 @@ export const useUserStore = defineStore('user', {
   },
   actions: {
     logout() {
-      this.$patch({
-        username: '',
-        token: '',
-        id: 1
-      });
+      this.$reset();
       routePathToPage('/manage/login');
     },
     async login(formState: LoginForm) {
