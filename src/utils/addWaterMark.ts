@@ -1,7 +1,7 @@
 import { useUserStore } from '@/store/user'
 
 export function addWaterMark(file: Blob, callback: BlobCallback) {
-  const { username } = useUserStore();
+  const watermark = 'koa-blog @ ' + (useUserStore()).username;
   const reader = new FileReader();
   reader.readAsDataURL(file);
   reader.onload = () => {
@@ -12,15 +12,16 @@ export function addWaterMark(file: Blob, callback: BlobCallback) {
       canvas.width = img.naturalWidth;
       canvas.height = img.naturalHeight;
       const ctx = canvas.getContext('2d');
-      const fontSize = scale(username.length, { o: [0, 400], t: [0, img.naturalWidth] });
-      const position = { x: img.naturalWidth - (username.length * fontSize), y: img.naturalHeight - fontSize - 15 };
-      console.log(fontSize, position);
+      const fontSize = scale(54.45, { o: [0, 1980], t: [0, img.naturalWidth] });
+      // 根据中文和英文设置不同的字体大小
+      const displace = ((watermark.split('').reduce((len, c) => len + (/[a-z0-9\s\-@]/i.test(c) ? 1 : 2.2), 0)) * fontSize) / 2
+      const position = { x: img.naturalWidth - displace, y: img.naturalHeight - fontSize - 15 };
       if(ctx) {
         ctx.drawImage(img, 0, 0);
         ctx.fillStyle = 'white';
         ctx.textBaseline = 'middle';
         ctx.font = `oblique ${fontSize}px 宋体 bold`;
-        ctx.fillText(`koa-blog @ ${username}`, position.x, position.y);
+        ctx.fillText(watermark, position.x, position.y);
       }
       canvas.toBlob(callback);
     };
