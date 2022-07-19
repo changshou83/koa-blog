@@ -5,12 +5,12 @@ import { useWindowEvent } from '@/composables/event/useWindowEvent';
  * 判断页面是否已滚动
  * @returns 
  */
-export const useWindowScrollStatus = () => {
+export const useWindowScrollStatus = (limit: number = 0) => {
   const status = ref(false);
   
   useWindowEvent('scroll', () => {
     const { scrollTop } = document.documentElement;
-    status.value = scrollTop > 0 ? true : false;
+    status.value = scrollTop > limit ? true : false;
   });
 
   return status;

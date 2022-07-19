@@ -1,4 +1,5 @@
 <script lang='ts' setup>
+import type { Ref } from 'vue'
 import { Show } from '@/model/articles';
 
 import Catalog from "@/components/Catalog.vue";
@@ -7,7 +8,7 @@ import { CommentOutlined } from '@ant-design/icons-vue';
 
 // 加载CSS文件
 import '@wangeditor/editor/dist/css/style.css';
-import { ArticleInfo } from '@/types';
+import { ArticleInfo, CatalogNode } from '@/types';
 
 windowScrollTo({ top: 0 }, 'auto')
 const Message = useMessage();
@@ -19,13 +20,18 @@ const article = ref<ArticleInfo>({
   headImg: 'https://w.wallhaven.cc/full/6o/wallhaven-6o1pl7.jpg',
   content: '默认内容'
 });
+let catalog: Ref<CatalogNode[]> = ref([]);
 
 const [loading, getArticleInfo] = useLoading(() =>
   Show(Number(id.value), 1500)
     .then((data) => {
       if(data) {
+        /* 自动生成文章目录 */
+        const { catalogNodes, htmlText } = generateCatalog(data.content);
+        catalog.value = catalogNodes;
         article.value = {
-          ...data
+          ...data,
+          content: htmlText
         }
       }
     })
@@ -42,29 +48,34 @@ watchEffect(() => {
 }, {
   flush: 'post'
 })
-
-/* 自动生成文章目录 */
 </script>
 
 <template>
-  <main class="details w-e-text shadow">
-    <Skeleton.Image v-if="loading" class="skeleton-head-img"/>
-    <img :src="article.headImg" alt="文章头图" class="head-img" v-if="!loading"/>
-    <Skeleton :loading="loading" active :paragraph="{ rows: 4 }">
-      <h1 class="title">{{article.title}}</h1>
-      <a-tag color="#42A5F5" class="type">{{article.articleType}}</a-tag>
-      <Alert :message="article.intro" type="info" class="intro" show-icon v-if="article.intro">
-        <template #icon><CommentOutlined /></template>
-      </Alert>
-      <main v-html="article.content" class="content"></main>
-    </Skeleton>
+  <main class="article">
+    <main class="details w-e-text shadow">
+      <Skeleton.Image v-if="loading" class="skeleton-head-img"/>
+      <img :src="article.headImg" alt="文章头图" class="head-img" v-if="!loading"/>
+      <Skeleton :loading="loading" active :paragraph="{ rows: 4 }">
+        <h1 class="title">{{article.title}}</h1>
+        <a-tag color="#42A5F5" class="type">{{article.articleType}}</a-tag>
+        <Alert :message="article.intro" type="info" class="intro" show-icon v-if="article.intro">
+          <template #icon><CommentOutlined /></template>
+        </Alert>
+        <main v-html="article.content" class="content"></main>
+      </Skeleton>
+    </main>
+    <ul class="list-wrap">
+      <Catalog v-for="node in catalog" :catalogNode="node" :loading="loading"/>
+    </ul>
   </main>
-  <Catalog :content="article.content" />
 </template>
 
 <style scoped>
+.article {
+  position: relative;
+  padding-bottom: 50px;
+}
 .details {
-  margin: 20px;
   margin-left: 15vw;
   margin-right: 30vw;
   padding: 20px;

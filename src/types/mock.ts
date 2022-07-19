@@ -62,3 +62,10 @@ export interface PaginationConfig {
   page: number;
   type?: string;
 }
+
+export interface CatalogNode {
+  title: string;
+  tag: string;
+  children: CatalogNode[];
+  id: string; // 标题元素的id属性值，用于跳转到文章指定标题位置
+};
