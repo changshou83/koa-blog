@@ -41,6 +41,8 @@ watchEffect(() => {
 }, {
   flush: 'post'
 })
+
+/* 自动生成文章目录 */
 </script>
 
 <template>

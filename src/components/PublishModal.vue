@@ -64,7 +64,7 @@ const beforeUpload: UploadProps['beforeUpload'] = file => {
   }
   if(!isLt2M) return Promise.reject();
 
-  // 加水印，这水印加了但是看不着，调整一下图片样式
+  // 加水印
   return new Promise((resolve) => addWaterMark(file, resolve as BlobCallback));
 }
 
@@ -74,6 +74,7 @@ const onFilesAdded = (info: UploadChangeParam) => {
   }
 };
 const onFilesDeleted = (file: UploadFile) => {
+  // 禁止删除
   return false;
 }
 const uploadToQiNiu = (options: any) => {

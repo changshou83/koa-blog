@@ -13,7 +13,7 @@ export function addWaterMark(file: Blob, callback: BlobCallback) {
       canvas.height = img.naturalHeight;
       const ctx = canvas.getContext('2d');
       const fontSize = scale(54.45, { o: [0, 1980], t: [0, img.naturalWidth] });
-      // 根据中文和英文设置不同的字体大小
+      // 根据中文和英文设置不同的位移
       const displace = ((watermark.split('').reduce((len, c) => len + (/[a-z0-9\s\-@]/i.test(c) ? 1 : 2.2), 0)) * fontSize) / 2
       const position = { x: img.naturalWidth - displace, y: img.naturalHeight - fontSize - 15 };
       if(ctx) {
