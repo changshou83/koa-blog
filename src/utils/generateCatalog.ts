@@ -6,7 +6,8 @@ import { CatalogNode } from "@/types";
  * @returns 添加完id的文章内容及对应树状结构
  */
 export function generateCatalog (htmlText: string = '') {
-  const tags = ["h1", "h2", "h3", "h4", "h5", "h6"];
+  // const tags = ["h1", "h2", "h3", "h4", "h5", "h6"];
+  const tags = ["h1", "h2", "h3"];
   const tempEle = document.createElement("div");
   tempEle.innerHTML = htmlText;
 
@@ -64,10 +65,11 @@ export function generateCatalog (htmlText: string = '') {
 }
 
 export function catalogTrack() {
-  const allHeading = document.querySelectorAll<HTMLHeadingElement>('h1,h2,h3,h4,h5,h6')
-	let $currentHeading = document.querySelector('h1');
-	allHeading.forEach(heading => {
-		if (heading.offsetTop < document.documentElement.scrollTop + 20) {
+  // const allHeading = document.querySelectorAll<HTMLHeadingElement>('h1,h2,h3,h4,h5,h6')
+  const allHeading = document.querySelectorAll<HTMLHeadingElement>('h1,h2,h3')
+  let $currentHeading = document.querySelector('h1:not(.title)');
+  allHeading.forEach(heading => {
+		if (heading.offsetTop < document.documentElement.scrollTop + 140) {
       $currentHeading = heading;
 		}
   })

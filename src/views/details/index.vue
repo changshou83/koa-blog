@@ -64,17 +64,34 @@ watchEffect(() => {
         <main v-html="article.content" class="content"></main>
       </Skeleton>
     </main>
-    <ul class="list-wrap">
-      <Catalog v-for="node in catalog" :catalogNode="node" :loading="loading"/>
-    </ul>
+    <main class="list-container">
+      <div class="catalog-title">目录</div>
+      <ul class="catalog-list">
+        <Catalog v-for="node in catalog" :catalogNode="node" :loading="loading"/>
+      </ul>
+    </main>
   </main>
 </template>
 
 <style scoped>
+/* 容器 */
 .article {
   position: relative;
-  padding-bottom: 50px;
+  padding-bottom: 80px;
 }
+/* 骨架屏样式 */
+.skeleton-head-img {
+  width: 100%;
+  height: 250px;
+  display: grid;
+  place-content: center;
+  background-color: rgba(190,190,190,0.2);
+  margin-bottom: 20px;
+}
+:deep(.ant-skeleton-image) {
+  background-color: transparent;
+}
+/* 文章样式 */
 .details {
   margin-left: 15vw;
   margin-right: 30vw;
@@ -95,18 +112,6 @@ watchEffect(() => {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
-
-.skeleton-head-img {
-  width: 100%;
-  height: 250px;
-  display: grid;
-  place-content: center;
-  background-color: rgba(190,190,190,0.2);
-  margin-bottom: 20px;
-}
-:deep(.ant-skeleton-image) {
-  background-color: transparent;
-}
 .title {
   margin-top: 300px;
   height: 80px;
@@ -123,9 +128,36 @@ watchEffect(() => {
 .intro {
   margin-bottom: 20px;
 }
-
 .content {
   padding: 20px;
   font-size: 1.3em;
+}
+/* 侧边栏 */
+.list-container {
+  position: fixed;
+  top: 0;
+  right: 40px;
+  transform: translateY(30%);
+  width: 220px;
+  max-height: 400px;
+  padding: 10px 0;
+  padding-left: 40px;
+  margin-top: -10px;
+  overflow: hidden;
+}
+.catalog-title {
+  font-weight: 500;
+  padding: 0.5rem 0;
+  margin: 0;
+  font-size: 24px;
+  line-height: 2rem;
+  color: #1d2129;
+  border-bottom: 1px solid #c4c5c9;
+}
+.catalog-list {
+  position: relative;
+  line-height: 22px;
+  padding: 0 0 12px;
+  margin: 0;
 }
 </style>
