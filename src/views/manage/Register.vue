@@ -65,19 +65,21 @@ const handleSubmit: FormProps['onSubmit'] = async () => {
       :model="formState"
       @submit="handleSubmit"
     >
+      <a-form-item>
+        <h2 class="form-title">Register</h2>
+      </a-form-item>
       <a-form-item v-bind="validateInfos.username">
-        <a-input v-model:value="formState.username" placeholder="Username">
+        <a-input class="input-username" v-model:value="formState.username" placeholder="Username">
           <template #prefix><UserOutlined style="color: rgba(0, 0, 0, 0.25)" /></template>
         </a-input>
       </a-form-item>
       <a-form-item v-bind="validateInfos.password">
-        <a-input-password v-model:value="formState.password" type="password" placeholder="Password">
+        <a-input-password class="input-password" v-model:value="formState.password" type="password" placeholder="Password">
           <template #prefix><LockOutlined style="color: rgba(0, 0, 0, 0.25)" /></template>
         </a-input-password>
       </a-form-item>
       <a-form-item>
         <a-button
-          type="primary"
           html-type="submit"
           block
           :disabled="!canRegister"
@@ -91,10 +93,42 @@ const handleSubmit: FormProps['onSubmit'] = async () => {
 
 <style scoped>
 .register {
+  width: 100%;
   height: 80vh;
   padding: 0 50px;
   display: grid;
   place-content: center;
+}
+.register-form {
+  width: 350px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid #CFD8DC;
+  background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+}
+.form-title {
+  text-align: center;
+  font-weight: 200;
+  font-size: 2em;
+  margin-top: 10px;
+  color: #34495e;
+}
+.register-form .input-username,
+.register-form .input-password,
+.register-form button {
+  width: 85%;
+  margin-left: 7.5%;
+  margin-bottom: 15px;
+  height: 40px;
+  border-radius: 5px;
+  outline: 0;
+}
+.register-form button {
+  font-size: 14px;
+  font-weight: 200;
+  cursor: pointer;
+  padding: 0 20px;
 }
 .register-form {
   width: 330px;

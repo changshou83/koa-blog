@@ -68,27 +68,31 @@ const toRegister = routePathToPage('/manage/register');
       :model="formState"
       @submit="handleSubmit"
     >
+      <a-form-item>
+        <h2 class="form-title">Login</h2>
+      </a-form-item>
       <a-form-item v-bind="validateInfos.username">
-        <a-input v-model:value="formState.username" placeholder="Username">
+        <a-input class="input-username" v-model:value="formState.username" placeholder="Username">
           <template #prefix><UserOutlined style="color: rgba(0, 0, 0, 0.25)" /></template>
         </a-input>
       </a-form-item>
       <a-form-item v-bind="validateInfos.password">
-        <a-input-password v-model:value="formState.password" type="password" placeholder="Password">
+        <a-input-password class="input-password" v-model:value="formState.password" type="password" placeholder="Password">
           <template #prefix><LockOutlined style="color: rgba(0, 0, 0, 0.25)" /></template>
         </a-input-password>
       </a-form-item>
       <a-form-item>
         <a-button
-          type="primary"
+          class="submit-button"
           html-type="submit"
           block
           :disabled="!canLogin"
         >
           Log in
         </a-button>
-        Or
-        <span @click="toRegister" class="to-register">register now!</span>
+      </a-form-item>
+      <a-form-item>
+        <div @click="toRegister" class="to-register"><p>没有账号？快注册一个吧！</p></div>
       </a-form-item>
     </a-form>
   </main>
@@ -96,19 +100,46 @@ const toRegister = routePathToPage('/manage/register');
 
 <style scoped>
 .login {
+  width: 100%;
   height: 80vh;
   padding: 0 50px;
   display: grid;
   place-content: center;
 }
 .login-form {
-  width: 330px;
+  width: 350px;
   padding: 20px;
   background-color: white;
   border-radius: 8px;
   border: 1px solid #CFD8DC;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
+.form-title {
+  text-align: center;
+  font-weight: 200;
+  font-size: 2em;
+  margin-top: 10px;
+  color: #34495e;
+}
+.login-form .input-username,
+.login-form .input-password,
+.login-form button {
+  width: 85%;
+  margin-left: 7.5%;
+  margin-bottom: 15px;
+  height: 40px;
+  border-radius: 5px;
+  outline: 0;
+}
+.login-form button {
+  font-size: 14px;
+  font-weight: 200;
+  cursor: pointer;
+  padding: 0 20px;
 }
 .to-register {
   color: #1890ff;
+  text-align: center;
+  font-size: 12px;
 }
 </style>
