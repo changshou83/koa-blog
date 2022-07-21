@@ -18,6 +18,14 @@ const ManageRouter: AppRouteRecordRaw = {
       }
     },
     {
+      path: 'register',
+      name: 'ManageRegister',
+      component: () => import('@/views/manage/Register.vue'),
+      meta: {
+        title: '注册'
+      }
+    },
+    {
       path: 'editor',
       name: 'ManageEditor',
       component: () => import('@/views/manage/Editor.vue'),

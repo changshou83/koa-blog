@@ -1,3 +1,4 @@
+import { useUserStore } from '@/store/user';
 import { routePathToPage } from '@/utils/route/routePathToPage';
 
 export const appViewConfig = {
@@ -32,17 +33,29 @@ export const appViewConfig = {
       handle: routePathToPage('/manage/editor'),
     },
     {
-      text: '归档',
-      handle: routePathToPage('/show/files'),
-    },
-    {
-      text: '赞助列表',
-      handle: routePathToPage('/show/lists'),
-    },
-    {
       text: '关于我',
       handle: routePathToPage('/show/about'),
       type: 'primary',
+    },
+    {
+      text: '登出',
+      type: 'danger',
+      handle: () => {
+        const user = useUserStore();
+        const message = useMessage();
+        if(user.token) {
+          user.logout();
+          message.success({
+            message: '登出成功'
+          })
+          routePathToPage('/manage/login')();
+        } else {
+          message.error({
+            message: '请先登录'
+          })
+
+        }
+      }
     },
   ],
 };

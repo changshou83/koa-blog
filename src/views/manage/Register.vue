@@ -1,14 +1,12 @@
 <script lang='ts' setup>
-import { useUserStore } from "@/store/user"
-
 import { Form } from 'ant-design-vue';
 import { UserOutlined, LockOutlined } from '@ant-design/icons-vue';
 
 import type { FormProps } from 'ant-design-vue';
 import type { Rule } from 'ant-design-vue/es/form';
 import { LoginForm } from '@/types';
+import { Register } from '@/model/user';
 
-const user = useUserStore();
 const formState = reactive<LoginForm>({
   username: '',
   password: '',
@@ -27,7 +25,7 @@ const rules = reactive<Record<string, Rule[]>>({
 })
 
 const { validateInfos } = Form.useForm(formState, rules)
-const canLogin = computed(() => {
+const canRegister = computed(() => {
   const status = [
     validateInfos.username.validateStatus,
     validateInfos.password.validateStatus
@@ -38,32 +36,31 @@ const canLogin = computed(() => {
 
 // 提交数据处理
 const Message = useMessage();
-const toArticlePage = routePathToPage('/manage/articles/1')
+const toLogin = routePathToPage('/manage/login')
 const handleSubmit: FormProps['onSubmit'] = async () => {
   try {
-    await user.login(formState)
+    await Register(formState)
     Message.success({
-      message: '登录成功',
+      message: '注册成功',
       duration: 0.5
     })
-    setTimeout(toArticlePage, 1000)
+    setTimeout(toLogin, 1000)
   } catch(err: any) {
+    formState.username = '';
     formState.password = '';
     Message.error({
-      message: "登陆失败",
+      message: "注册失败",
       description: err.reason || '未知错误',
       duration: 2
     })
   }
 };
-
-const toRegister = routePathToPage('/manage/register');
 </script>
 
 <template>
-  <main class="login">
+  <main class="register">
     <a-form
-      class="login-form shadow"
+      class="register-form shadow"
       layout="vertical"
       :model="formState"
       @submit="handleSubmit"
@@ -83,32 +80,28 @@ const toRegister = routePathToPage('/manage/register');
           type="primary"
           html-type="submit"
           block
-          :disabled="!canLogin"
+          :disabled="!canRegister"
         >
-          Log in
+          Sign up
         </a-button>
-        Or
-        <span @click="toRegister" class="to-register">register now!</span>
       </a-form-item>
     </a-form>
   </main>
 </template>
 
 <style scoped>
-.login {
+.register {
   height: 80vh;
   padding: 0 50px;
   display: grid;
   place-content: center;
 }
-.login-form {
+.register-form {
   width: 330px;
   padding: 20px;
   background-color: white;
   border-radius: 8px;
   border: 1px solid #CFD8DC;
 }
-.to-register {
-  color: #1890ff;
-}
 </style>
+

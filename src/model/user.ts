@@ -8,3 +8,12 @@ export async function Login(params: LoginForm) {
     return Promise.reject(err)
   }
 }
+
+export async function Register(params: LoginForm) {
+  try {
+    const { data } = await userRegister(params)
+    return Promise.resolve(data)
+  } catch(err) {
+    return Promise.reject(err)
+  }
+}
