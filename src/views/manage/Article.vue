@@ -5,9 +5,10 @@ import { columns, colorMap, paginationConfig } from '@/view-provider/manage/arti
 
 import { Table as CTable, TablePaginationConfig } from 'ant-design-vue';
 import { ArticleInfo, ArticleType } from '@/types';
+import { useUserStore } from '@/store/user';
 
 const Message = useMessage();
-
+const user = useUserStore();
 // route与分页器联动
 const current = useLinkedRouteParam<number>('page', true)
 const pageNumChange = routeParamsChange('page')
@@ -19,7 +20,7 @@ const type = (articleType: any[] | string) => Array.isArray(articleType) ? artic
 // 处理文章列表数据
 let source: Ref<ArticleInfo[]> = ref([])
 const [loading, getList] = useLoading(() => 
-  Index({ page: current.value, limit: paginationConfig?.pageSize || 1 }, 300)
+  Index({ page: current.value, limit: paginationConfig?.pageSize || 1, userId: user.id }, 300)
     .then((data) => {
       if(data) {
         source.value = data.rows!;

@@ -1,5 +1,4 @@
 <script lang='ts' setup>
-import type { Ref } from 'vue'
 import { Show } from '@/model/articles';
 
 import Catalog from "@/components/Catalog.vue";
@@ -20,7 +19,8 @@ const article = ref<ArticleInfo>({
   headImg: 'https://w.wallhaven.cc/full/6o/wallhaven-6o1pl7.jpg',
   content: '默认内容'
 });
-let catalog: Ref<CatalogNode[]> = ref([]);
+const catalog = ref<CatalogNode[]>([]);
+const showCatalog = ref<boolean>(true);
 
 const [loading, getArticleInfo] = useLoading(() =>
   Show(Number(id.value), 1500)
@@ -33,6 +33,7 @@ const [loading, getArticleInfo] = useLoading(() =>
           ...data,
           content: htmlText
         }
+        if(catalogNodes.length === 0) showCatalog.value = false;
       }
     })
     .catch((err) => {
@@ -64,7 +65,7 @@ watchEffect(() => {
         <main v-html="article.content" class="content"></main>
       </Skeleton>
     </main>
-    <main class="list-container">
+    <main class="list-container" v-if="showCatalog">
       <div class="catalog-title">目录</div>
       <ul class="catalog-list">
         <Catalog v-for="node in catalog" :catalogNode="node" :loading="loading"/>
@@ -135,7 +136,7 @@ watchEffect(() => {
 /* 侧边栏 */
 .list-container {
   position: fixed;
-  top: 0;
+  top: 10%;
   right: 40px;
   transform: translateY(30%);
   width: 220px;
