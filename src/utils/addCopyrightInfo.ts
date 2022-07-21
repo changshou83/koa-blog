@@ -12,4 +12,5 @@ export function addCopyrightInfo(event: ClipboardEvent) {
       clipboardData.setData("text/plain", copyText);
     }
   }
+  event.preventDefault();
 }
