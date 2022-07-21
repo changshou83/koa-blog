@@ -13,7 +13,7 @@ const scrollToTop = (id: string = '') => {
   if(heading) {
     windowScrollTo({
       top: heading.offsetTop - 80
-    })
+    }, 'smooth')
   }
 }
 </script>
