@@ -49,6 +49,11 @@ watchEffect(() => {
 }, {
   flush: 'post'
 })
+/* 在复制的内容后面加上版权信息 */
+useWindowEvent('copy', (event) => {
+  addCopyrightInfo(event as ClipboardEvent);
+  return false;
+})
 </script>
 
 <template>

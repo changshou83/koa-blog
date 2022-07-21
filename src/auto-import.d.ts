@@ -3,6 +3,7 @@ export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
+  const addCopyrightInfo: typeof import('./utils/addCopyrightInfo')['addCopyrightInfo']
   const addDomain: typeof import('./utils/route/urlToExternalLink')['addDomain']
   const addWaterMark: typeof import('./utils/addWaterMark')['addWaterMark']
   const articleArchive: typeof import('./api/articles')['articleArchive']
@@ -113,6 +114,7 @@ declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
+    readonly addCopyrightInfo: UnwrapRef<typeof import('./utils/addCopyrightInfo')['addCopyrightInfo']>
     readonly addDomain: UnwrapRef<typeof import('./utils/route/urlToExternalLink')['addDomain']>
     readonly addWaterMark: UnwrapRef<typeof import('./utils/addWaterMark')['addWaterMark']>
     readonly articleArchive: UnwrapRef<typeof import('./api/articles')['articleArchive']>
