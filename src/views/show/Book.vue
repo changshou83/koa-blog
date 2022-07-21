@@ -5,11 +5,13 @@ import { Index } from '@/model/articles';
 
 import CardList from '@/components/CardList.vue';
 import CPagination from '@/components/Pagination.vue';
+import { useUserStore } from '@/store/user';
 
-const { cardRecords, total, limit } = bookViewConfig
-const pageNum = useLinkedRouteParam('pageNum', true)
+const { cardRecords, total, limit } = bookViewConfig;
+const pageNum = useLinkedRouteParam('pageNum', true);
+const user = useUserStore();
 watchEffect(() => {
-  Index({ page: pageNum.value as number, limit: limit.value || 1, type: 'book' }, 300)
+  Index({ page: pageNum.value as number, limit: limit.value || 1, type: 'book', userId: user.id }, 300)
     .then((data) => {
       if(data) {
         cardRecords.value = data.rows

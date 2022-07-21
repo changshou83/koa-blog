@@ -1,4 +1,4 @@
-import { ArticleInfo, PaginationConfig, ResponseConfig } from '@/types'
+import { ArticleInfo, ArticleIndexParams, ResponseConfig } from '@/types'
 
 export async function Create(params: ArticleInfo, delay?: number) {
   try {
@@ -8,7 +8,7 @@ export async function Create(params: ArticleInfo, delay?: number) {
     return Promise.reject(err as ResponseConfig<null>)
   }
 }
-export async function Index(params: PaginationConfig, delay?: number) {
+export async function Index(params: ArticleIndexParams, delay?: number) {
   try {
     const [{ data }] = await lazyRequest(articleIndex(params), delay)
     return Promise.resolve(data)

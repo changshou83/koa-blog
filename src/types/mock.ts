@@ -63,6 +63,10 @@ export interface PaginationConfig {
   type?: string;
 }
 
+export type ArticleIndexParams = PaginationConfig & {
+  userId: number;
+} 
+
 export interface CatalogNode {
   title: string;
   tag: string;

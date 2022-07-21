@@ -1,4 +1,4 @@
-import { ArticleInfo, ResponseConfig, PaginationConfig, ListConfig, fileRecordConfig } from "@/types";
+import { ArticleInfo, ResponseConfig, ListConfig, fileRecordConfig, ArticleIndexParams } from "@/types";
 
 /**
  * 创建文章
@@ -12,9 +12,9 @@ export function articleCreate(params: ArticleInfo): Promise<ResponseConfig<Artic
  * 获取指定页数的文章
  * @returns 
  */
-export function articleIndex(params: PaginationConfig): Promise<ResponseConfig<ListConfig<ArticleInfo>>> {
-  const { limit, page, type } = params
-  return http.get(`/articles?page=${page}&limit=${limit}` + (type ? `&type=${type}` : ''))
+export function articleIndex(params: ArticleIndexParams): Promise<ResponseConfig<ListConfig<ArticleInfo>>> {
+  const { limit, page, type, userId } = params
+  return http.get(`/articles?page=${page}&limit=${limit}&userId=${userId}` + (type ? `&type=${type}` : ''))
 }
 
 /**

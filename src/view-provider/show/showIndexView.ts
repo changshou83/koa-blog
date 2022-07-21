@@ -8,12 +8,13 @@ import {
 import { h } from 'vue';
 import { routeNameToPage } from '@/utils/route/routeNameToPage';
 import { routePathToPage } from '@/utils/route/routePathToPage';
+import { useUserStore } from '@/store/user'
 
 export const showIndexConfig = {
   avatar: {
     src: new URL(`../../assets/imgs/avatar.png`, import.meta.url).href,
   },
-  title: 'Changshou83',
+  title: (useUserStore()).username,
   subTitle: '怕是寄了',
   hideList: ['ShowBlog'],
   buttonGroup: [
