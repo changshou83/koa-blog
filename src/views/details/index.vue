@@ -142,11 +142,9 @@ useWindowEvent('copy', (event) => addCopyrightInfo(event as ClipboardEvent))
   right: 40px;
   transform: translateY(30%);
   width: 220px;
-  max-height: 400px;
   padding: 10px 0;
   padding-left: 40px;
   margin-top: -10px;
-  overflow: hidden;
 }
 .catalog-title {
   font-weight: 500;
@@ -158,6 +156,8 @@ useWindowEvent('copy', (event) => addCopyrightInfo(event as ClipboardEvent))
   border-bottom: 1px solid #c4c5c9;
 }
 .catalog-list {
+  max-height: 400px;
+  overflow: auto;
   position: relative;
   line-height: 22px;
   padding: 0 0 12px;
