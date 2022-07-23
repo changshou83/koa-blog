@@ -100,6 +100,7 @@ declare global {
   const useState: typeof import('./composables/core/useState')['useState']
   const useWindowEvent: typeof import('./composables/event/useWindowEvent')['useWindowEvent']
   const useWindowScrollStatus: typeof import('./composables/event/useWindowScrollStatus')['useWindowScrollStatus']
+  const userExchangeToken: typeof import('./api/users')['userExchangeToken']
   const userLogin: typeof import('./api/users')['userLogin']
   const userRegister: typeof import('./api/users')['userRegister']
   const watch: typeof import('vue')['watch']
@@ -211,6 +212,7 @@ declare module '@vue/runtime-core' {
     readonly useState: UnwrapRef<typeof import('./composables/core/useState')['useState']>
     readonly useWindowEvent: UnwrapRef<typeof import('./composables/event/useWindowEvent')['useWindowEvent']>
     readonly useWindowScrollStatus: UnwrapRef<typeof import('./composables/event/useWindowScrollStatus')['useWindowScrollStatus']>
+    readonly userExchangeToken: UnwrapRef<typeof import('./api/users')['userExchangeToken']>
     readonly userLogin: UnwrapRef<typeof import('./api/users')['userLogin']>
     readonly userRegister: UnwrapRef<typeof import('./api/users')['userRegister']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>

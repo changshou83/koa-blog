@@ -1,4 +1,5 @@
 import { UserInfo, LoginForm, ResponseConfig } from '@/types';
+import axios from 'axios'
 
 /**
  * 用户登录
@@ -30,4 +31,12 @@ export function userRegister(params: LoginForm): Promise<ResponseConfig<UserInfo
     const result = { status: -1, msg: '用户名已被占用', data: '' }
     return Promise.resolve(result)
   }
+}
+
+export function userExchangeToken(refresh_token: string) {
+  return axios.put('/api/users/authorization', {}, {
+    headers: {
+      Authorization: `Bearer ${refresh_token}`,
+    }
+  })
 }

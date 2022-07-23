@@ -5,6 +5,7 @@ export const useUserStore = defineStore('user', {
   state: () => ({
     username: '',
     token: '',
+    refresh_token: '',
     id: 1
   }),
   getters: {
@@ -16,6 +17,12 @@ export const useUserStore = defineStore('user', {
     }
   },
   actions: {
+    updateToken(tokenInfo) {
+      this.$patch({
+        token: tokenInfo.token,
+        refresh_token:  tokenInfo.refresh_token
+      })
+    },
     logout() {
       this.$reset();
       routePathToPage('/manage/login');

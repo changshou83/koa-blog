@@ -11,7 +11,7 @@ const instance = axios.create({
 instance.interceptors.request.use((config: AxiosRequestConfig) => {
   const user = useUserStore()
   user.token && (config.headers!.authorization = user.authorization)
-
+  
   return config;
 }, (err: AxiosError) =>  Promise.reject(err))
 
@@ -26,7 +26,25 @@ instance.interceptors.response.use(
       return Promise.reject(data)
     }
   },
-  (err: AxiosError) => Promise.reject(err.response!.data)
+  async (err: AxiosError) => {
+    const user = useUserStore()
+    if(err.response && err.response.status === 401 && user.refresh_token) {
+      // token 过期
+      try {
+        const { data: res } = await userExchangeToken(user.refresh_token);
+        user.updateToken(res.data);
+
+        // 继续上一个请求
+        return instance(err.config);
+      } catch {
+        // refresh_token 也过期
+        user.$reset();
+        routePathToPage('/manage/login')();
+      }
+    }
+
+    return Promise.reject(err.response!.data)
+  }
 )
 
 export const lazyRequest = <Arg = any>(request: Promise<Arg>, delay = 1000) => {
