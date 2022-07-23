@@ -1,11 +1,12 @@
 <script lang='ts' setup>
 import { Index, Delete } from '@/model/articles';
-import { Ref } from 'vue';
+import { createVNode, Ref } from 'vue';
 import { columns, colorMap, paginationConfig } from '@/view-provider/manage/article';
 
-import { Table as CTable, TablePaginationConfig } from 'ant-design-vue';
+import { Modal, Table as CTable, TablePaginationConfig } from 'ant-design-vue';
 import { ArticleInfo, ArticleType } from '@/types';
 import { useUserStore } from '@/store/user';
+import { ExclamationCircleOutlined } from '@ant-design/icons-vue';
 
 const Message = useMessage();
 const user = useUserStore();
@@ -38,6 +39,20 @@ const [loading, getList] = useLoading(() =>
 watchEffect(() => getList(), {
   flush: 'post'
 })
+
+const DestoryConfirm = (id: number) => Modal.confirm({
+  title: '删除文章',
+  icon: createVNode(ExclamationCircleOutlined),
+  content: '删除的文章将不会被恢复',
+  okText: '确认',
+  cancelText: '取消',
+  onOk() {
+    destroy(id);
+  },
+  onCancel() {
+    useMessage().info({ message: "文章", description: "已撤销删除" })
+  }
+});
 
 const destroy = (id: number) => 
   Delete(Number(id))
@@ -90,7 +105,7 @@ const update = (id: number) => routePathToPage(`/manage/editor`, { query: { id }
           </span>
         </template>
         <template v-else-if="column.key === 'edit'">
-          <a-button class="mx-1" type="danger" @click="destroy(record.id)">删除</a-button>
+          <a-button class="mx-1" type="danger" @click="DestoryConfirm(record.id)">删除</a-button>
           <a-button class="mx-1" type="primary" @click="update(record.id)">更新</a-button>
           <a-button class="mx-1" @click="check(record.id)">查看</a-button>
         </template>
