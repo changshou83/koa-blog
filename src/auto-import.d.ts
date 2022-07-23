@@ -77,7 +77,7 @@ declare global {
   const toRefs: typeof import('vue')['toRefs']
   const triggerRef: typeof import('vue')['triggerRef']
   const unref: typeof import('vue')['unref']
-  const uploadImage: typeof import('./utils/uploadImage')['uploadImage']
+  const uploadImage: typeof import('./api/image')['uploadImage']
   const uploadToken: typeof import('./api/image')['uploadToken']
   const urlToExternalLink: typeof import('./utils/route/urlToExternalLink')['urlToExternalLink']
   const useAppConfig: typeof import('./composables/core/useAppConfig')['useAppConfig']
@@ -189,7 +189,7 @@ declare module '@vue/runtime-core' {
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
     readonly unref: UnwrapRef<typeof import('vue')['unref']>
-    readonly uploadImage: UnwrapRef<typeof import('./utils/uploadImage')['uploadImage']>
+    readonly uploadImage: UnwrapRef<typeof import('./api/image')['uploadImage']>
     readonly uploadToken: UnwrapRef<typeof import('./api/image')['uploadToken']>
     readonly urlToExternalLink: UnwrapRef<typeof import('./utils/route/urlToExternalLink')['urlToExternalLink']>
     readonly useAppConfig: UnwrapRef<typeof import('./composables/core/useAppConfig')['useAppConfig']>

@@ -45,7 +45,7 @@ const createSubmit = (submitResult: any, msg: string[], onSuccess: FunctionArgs 
     .then(async (data: ArticleInfo) => {
       Message.success({ message: msg[0] })
       // 防止之后创建新文档时带上之前操作时的内容
-      valueHtml.value = '';
+      draft.value = '';
       modal.value?.setFormState({
         title: '',
         intro: '',
