@@ -1,5 +1,6 @@
 import { AppRouteRecordRaw } from '@/types';
 
+const template = (key: string) => t(`routes.Manage.${key}`)
 const ManageRouter: AppRouteRecordRaw = {
   path: '/manage',
   name: 'Manage',
@@ -14,7 +15,7 @@ const ManageRouter: AppRouteRecordRaw = {
       name: 'ManageLogin',
       component: () => import('@/views/manage/Login.vue'),
       meta: {
-        title: '登录'
+        title: template('Login')
       }
     },
     {
@@ -22,7 +23,7 @@ const ManageRouter: AppRouteRecordRaw = {
       name: 'ManageRegister',
       component: () => import('@/views/manage/Register.vue'),
       meta: {
-        title: '注册'
+        title: template('Register')
       }
     },
     {
@@ -30,7 +31,7 @@ const ManageRouter: AppRouteRecordRaw = {
       name: 'ManageEditor',
       component: () => import('@/views/manage/Editor.vue'),
       meta: {
-        title: '编辑文章',
+        title: template('Edit'),
         auth: true
       }
     },
@@ -39,7 +40,7 @@ const ManageRouter: AppRouteRecordRaw = {
       name: 'ManageArticle',
       component: () => import('@/views/manage/Article.vue'),
       meta: {
-        title: '管理文章',
+        title: template('Manage'),
         auth: true
       }
     },

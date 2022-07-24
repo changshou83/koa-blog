@@ -18,17 +18,18 @@ export const xssFilterOptions: IFilterXSSOptions = {
   },
 }
 
+const template = (key: string) => t(`pages.Manage.Editor.Confirm.${key}`)
 export const clearConfirm = (editorContent: Ref<string>) => Modal.confirm({
-  title: '清空文档',
+  title: template('Title'),
   icon: createVNode(ExclamationCircleOutlined),
-  content: '清空的文档将不会被恢复',
-  okText: '确认',
-  cancelText: '取消',
+  content: template('Content'),
+  okText: template('OkText'),
+  cancelText: template('CancelText'),
   onOk() {
     editorContent.value = ''
-    useMessage().info({ message: "草稿", description: "已清空" })
+    useMessage().info({ message: template('SuccessText.message'), description: template('SuccessText.description') })
   },
   onCancel() {
-    useMessage().info({ message: "草稿", description: "已撤销清空" })
+    useMessage().info({ message: template('ErrorText.message'), description: template('ErrorText.description') })
   }
 });

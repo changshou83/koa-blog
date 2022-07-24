@@ -7,6 +7,8 @@ import type { Rule } from 'ant-design-vue/es/form';
 import { LoginForm } from '@/types';
 import { Register } from '@/model/user';
 
+const template = (key: string) => t(`pages.Manage.Register.${key}`)
+const LoginTemplate = (key: string) => t(`pages.Manage.Login.${key}`)
 const formState = reactive<LoginForm>({
   username: '',
   password: '',
@@ -15,12 +17,12 @@ const formState = reactive<LoginForm>({
 const rules = reactive<Record<string, Rule[]>>({
   username: [{
     required: true,
-    message: "username为必填"
+    message: LoginTemplate('Rules.username')
   }],
   password: [{
     required: true,
     pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[^]{8,16}$/,
-    message: "password至少包含大小写字母和数字，长度为8-16"
+    message: LoginTemplate('Rules.password')
   }]
 })
 
@@ -41,7 +43,7 @@ const handleSubmit: FormProps['onSubmit'] = async () => {
   try {
     await Register(formState)
     Message.success({
-      message: '注册成功',
+      message: template('Message.Register.SuccessText'),
       duration: 0.5
     })
     setTimeout(toLogin, 1000)
@@ -49,8 +51,8 @@ const handleSubmit: FormProps['onSubmit'] = async () => {
     formState.username = '';
     formState.password = '';
     Message.error({
-      message: "注册失败",
-      description: err.reason || '未知错误',
+      message: template('Message.Register.ErrorText.message'),
+      description: err.reason || template('Message.Register.ErrorText.description'),
       duration: 2
     })
   }
@@ -66,15 +68,15 @@ const handleSubmit: FormProps['onSubmit'] = async () => {
       @submit="handleSubmit"
     >
       <a-form-item>
-        <h2 class="form-title">Register</h2>
+        <h2 class="form-title">{{template("Title")}}</h2>
       </a-form-item>
       <a-form-item v-bind="validateInfos.username">
-        <a-input class="input-username" v-model:value="formState.username" placeholder="Username">
+        <a-input class="input-username" v-model:value="formState.username" :placeholder="LoginTemplate('PlaceHolder.Username')">
           <template #prefix><UserOutlined style="color: rgba(0, 0, 0, 0.25)" /></template>
         </a-input>
       </a-form-item>
       <a-form-item v-bind="validateInfos.password">
-        <a-input-password class="input-password" v-model:value="formState.password" type="password" placeholder="Password">
+        <a-input-password class="input-password" v-model:value="formState.password" type="password" :placeholder="LoginTemplate('PlaceHolder.Password')">
           <template #prefix><LockOutlined style="color: rgba(0, 0, 0, 0.25)" /></template>
         </a-input-password>
       </a-form-item>
@@ -84,7 +86,7 @@ const handleSubmit: FormProps['onSubmit'] = async () => {
           block
           :disabled="!canRegister"
         >
-          Sign up
+          {{template("ButtonText")}}
         </a-button>
       </a-form-item>
     </a-form>

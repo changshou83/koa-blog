@@ -1,5 +1,6 @@
 import { AppRouteRecordRaw } from '@/types';
 
+const template = (key: string) => t(`routes.Show.${key}`)
 const ShowRouter: AppRouteRecordRaw = {
   path: '/show',
   name: 'Show',
@@ -14,7 +15,7 @@ const ShowRouter: AppRouteRecordRaw = {
       name: 'ShowBlog',
       component: () => import('@/views/show/Blog.vue'),
       meta: {
-        title: '博客',
+        title: template('Blog'),
         auth: true
       }
     },
@@ -23,7 +24,7 @@ const ShowRouter: AppRouteRecordRaw = {
       name: 'ShowBook',
       component: () => import('@/views/show/Book.vue'),
       meta: {
-        title: '读书笔记',
+        title: template('Book'),
         auth: true
       }
     },
@@ -32,7 +33,7 @@ const ShowRouter: AppRouteRecordRaw = {
       name: 'ShowProject',
       component: () => import('@/views/show/Project.vue'),
       meta: {
-        title: '我的项目',
+        title: template('Projects'),
         auth: true
       }
     },
@@ -41,7 +42,7 @@ const ShowRouter: AppRouteRecordRaw = {
       name: 'ShowFile',
       component: () => import('@/views/show/File.vue'),
       meta: {
-        title: '我的归档',
+        title: template('Archives'),
         auth: true
       }
     },
@@ -50,7 +51,7 @@ const ShowRouter: AppRouteRecordRaw = {
       name: 'ShowList',
       component: () => import('@/views/show/List.vue'),
       meta: {
-        title: '赞助列表',
+        title: template('Sponsors'),
         auth: true
       }
     },
@@ -59,7 +60,7 @@ const ShowRouter: AppRouteRecordRaw = {
       name: 'ShowAbout',
       component: () => import('@/views/show/About.vue'),
       meta: {
-        title: '关于我',
+        title: template('About'),
         auth: true
       }
     },

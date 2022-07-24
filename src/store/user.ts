@@ -1,6 +1,11 @@
 import { Login } from '@/model/user';
 import { LoginForm } from '@/types';
 
+interface TokenInfo {
+  token: string;
+  refresh_token: string;
+}
+
 export const useUserStore = defineStore('user', {
   state: () => ({
     username: '',
@@ -17,7 +22,7 @@ export const useUserStore = defineStore('user', {
     }
   },
   actions: {
-    updateToken(tokenInfo) {
+    updateToken(tokenInfo: TokenInfo) {
       this.$patch({
         token: tokenInfo.token,
         refresh_token:  tokenInfo.refresh_token

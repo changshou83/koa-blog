@@ -12,12 +12,13 @@ import { ArticleInfo, CatalogNode } from '@/types';
 windowScrollTo({ top: 0 }, 'auto')
 const Message = useMessage();
 const id = useLinkedRouteParam('id');
+const template = (key: string) => t(`pages.Detail.${key}`)
 const article = ref<ArticleInfo>({
-  title: '默认标题',
-  intro: '默认简介',
+  title: template('Default.Title'),
+  intro: template('Default.Intro'),
   articleType: 'blog',
   headImg: 'https://w.wallhaven.cc/full/6o/wallhaven-6o1pl7.jpg',
-  content: '默认内容'
+  content: template('Default.Content')
 });
 const catalog = ref<CatalogNode[]>([]);
 const showCatalog = ref<boolean>(true);
@@ -38,9 +39,9 @@ const [loading, getArticleInfo] = useLoading(() =>
     })
     .catch((err) => {
       Message.error({
-        message: '文章内容获取失败',
+        message: template('Message.ErrorText.message'),
         // data 是为了兼容 404 错误
-        description: err.data || err.reason || '未知错误'
+        description: err.data || err.reason || template('Message.ErrorText.description')
       })
     })
 )
@@ -68,7 +69,7 @@ useWindowEvent('copy', (event) => addCopyrightInfo(event as ClipboardEvent))
       </Skeleton>
     </main>
     <main class="list-container" v-if="showCatalog">
-      <div class="catalog-title">目录</div>
+      <div class="catalog-title">{{$t('pages.Detail.Catalog')}}</div>
       <ul class="catalog-list">
         <Catalog v-for="node in catalog" :catalogNode="node" :loading="loading"/>
       </ul>

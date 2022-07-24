@@ -72,6 +72,7 @@ declare global {
   const shallowReadonly: typeof import('vue')['shallowReadonly']
   const shallowRef: typeof import('vue')['shallowRef']
   const storeToRefs: typeof import('pinia')['storeToRefs']
+  const t: typeof import('./utils/t')['default']
   const toRaw: typeof import('vue')['toRaw']
   const toRef: typeof import('vue')['toRef']
   const toRefs: typeof import('vue')['toRefs']
@@ -87,6 +88,7 @@ declare global {
   const useCurrRouteOnHideList: typeof import('./composables/utils/useCurrRouteOnHideList')['useCurrRouteOnHideList']
   const useDebounceFn: typeof import('./utils/useDebounceFn')['useDebounceFn']
   const useEditor: typeof import('./composables/useEditor')['useEditor']
+  const useI18n: typeof import('vue-i18n')['useI18n']
   const useLinkedRouteParam: typeof import('./composables/utils/useLinkedRouteParam')['useLinkedRouteParam']
   const useLoading: typeof import('./composables/utils/useLoading')['useLoading']
   const useLocalStorage: typeof import('./composables/useLocalStorage')['useLocalStorage']
@@ -184,6 +186,7 @@ declare module '@vue/runtime-core' {
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
     readonly storeToRefs: UnwrapRef<typeof import('pinia')['storeToRefs']>
+    readonly t: UnwrapRef<typeof import('./utils/t')['default']>
     readonly toRaw: UnwrapRef<typeof import('vue')['toRaw']>
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
@@ -199,6 +202,7 @@ declare module '@vue/runtime-core' {
     readonly useCurrRouteOnHideList: UnwrapRef<typeof import('./composables/utils/useCurrRouteOnHideList')['useCurrRouteOnHideList']>
     readonly useDebounceFn: UnwrapRef<typeof import('./utils/useDebounceFn')['useDebounceFn']>
     readonly useEditor: UnwrapRef<typeof import('./composables/useEditor')['useEditor']>
+    readonly useI18n: UnwrapRef<typeof import('vue-i18n')['useI18n']>
     readonly useLinkedRouteParam: UnwrapRef<typeof import('./composables/utils/useLinkedRouteParam')['useLinkedRouteParam']>
     readonly useLoading: UnwrapRef<typeof import('./composables/utils/useLoading')['useLoading']>
     readonly useLocalStorage: UnwrapRef<typeof import('./composables/useLocalStorage')['useLocalStorage']>

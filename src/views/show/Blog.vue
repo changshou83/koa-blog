@@ -10,6 +10,7 @@ import { useUserStore } from '@/store/user';
 const { cardRecords, total, limit } = blogViewConfig
 const pageNum = useLinkedRouteParam('pageNum', true)
 const user = useUserStore()
+const template = (key: string) => t(`pages.Show.${key}`)
 watchEffect(() => {
   Index({ page: pageNum.value as number, limit: limit.value || 1 , type: 'blog', userId: user.id }, 300)
     .then((data) => {
@@ -20,8 +21,8 @@ watchEffect(() => {
     })
     .catch((err) => {
       useMessage().info({
-        message: '获取失败',
-        description: err.data || err.reason || '未知错误'
+        message: template('Message.ErrorText.message'),
+        description: err.data || err.reason || template('Message.ErrorText.description')
       })
     })
 }, {

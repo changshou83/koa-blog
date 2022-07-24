@@ -1,6 +1,7 @@
 import axios, { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import { baseURL } from '@/api/config';
 import { useUserStore } from '@/store/user';
+import { useLangStore } from '@/store/lang';
 
 const instance = axios.create({
   timeout: 10000,
@@ -10,7 +11,9 @@ const instance = axios.create({
 // 请求拦截
 instance.interceptors.request.use((config: AxiosRequestConfig) => {
   const user = useUserStore()
+  const lang = useLangStore()
   user.token && (config.headers!.authorization = user.authorization)
+  lang.curr && (config.headers!['Accept-language'] = lang.curr)
   
   return config;
 }, (err: AxiosError) =>  Promise.reject(err))

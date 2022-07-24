@@ -1,0 +1,201 @@
+{
+  "components": {
+    "view-header": {
+      "Back Home": "Back Home"
+    },
+    "button-group": {
+      "Logs": "Logs",
+      "Books": "Books",
+      "Projects": "Projects",
+      "Archives": "Archives",
+      "Sponsors": "Sponsors"
+    },
+    "header": {
+      "Home": "Home",
+      "Manage": "Manage",
+      "Create": "Create",
+      "About": "About",
+      "Logout": "Logout"
+    },
+    "lang-select": {
+      "Languages": "Languages",
+      "chinese": "chinese",
+      "english": "english"
+    },
+    "publish-modal": {
+      "Title": "Publish Settings",
+      "ButtonText": "Upload",
+      "ExtraText": "Once uploaded, can only be modified when uploading",
+      "Label": {
+        "Title": "Title",
+        "Intro": "Intro",
+        "HeadImage": "Head Image",
+        "Type": "Type"
+      },
+      "PlaceHolder": {
+        "Title": "Title",
+        "Intro": "Intro"
+      },
+      "RadioGroup": {
+        "Blog": "Blog",
+        "Book": "Book"
+      },
+      "Rules": {
+        "Title": "Title is required",
+        "Intro": "Introduction is required"
+      },
+      "Message": {
+        "BeforeUpload": {
+          "ErrorText": {
+            "message": "Failed to Upload",
+            "description": "Image Size cannot exceed 2MB!"
+          }
+        },
+        "UploadImage": {
+          "SuccessText": "Upload Successfully",
+          "ErrorText": {
+            "message": "Failed to Upload",
+            "description": "Unknown Error"
+          }
+        }
+      }
+    }
+  },
+  "pages": {
+    "Manage": {
+      "Article": {
+        "Title": "Title",
+        "CreatedAt": "CreatedAt",
+        "UpdatedAt": "UpdatedAt",
+        "Type": "Type",
+        "Edit": "Edit",
+        "Delete": "Delete",
+        "Update": "Update",
+        "Scan": "Scan"
+      },
+      "Editor": {
+        "Clear": "Clear",
+        "Update": "Update",
+        "Publish": "Publish",
+        "PlaceHolder": "Enter Something...",
+        "Confirm": {
+          "Title": "Clear Content",
+          "Content": "Cleared documents will not be recovered",
+          "OkText": "confirm",
+          "CancelText": "cancel",
+          "SuccessText": {
+            "message": "Draft",
+            "description": "Clear success"
+          },
+          "ErrorText": {
+            "message": "Draft",
+            "description": "Cancel clear success"
+          }
+        },
+        "Message": {
+          "DefaultError": "Unknown Error",
+          "Update": {
+            "SuccessText": "Updated Successfully",
+            "ErrorText": {
+              "message": "Failed to Update"
+            }
+          },
+          "Publish": {
+            "SuccessText": "Published Successfully",
+            "ErrorText": {
+              "message": "Failed to Publish"
+            }
+          },
+          "Show": {
+            "ErrorText": {
+              "message": "Failed to get article content"
+            }
+          }
+        }
+      },
+      "Login": {
+        "Title": "Login",
+        "ButtonText": "Log in",
+        "toRegister": "No account? Sign up now!",
+        "PlaceHolder": {
+          "Username": "Username",
+          "Password": "Password"
+        },
+        "Rules": {
+          "username": "username is required",
+          "password": "At least one Uppercase and Lowercase letter and number,and is 8-16 in length"
+        },
+        "Message": {
+          "Login": {
+            "SuccessText": "Login Successfully",
+            "ErrorText": {
+              "message": "Failed to Login",
+              "description": "Unknown Error"
+            }
+          },
+          "Logout": {
+            "SuccessText": "Logout Successfully",
+            "ErrorText": {
+              "message": "Please login first"
+            }
+          }
+        }
+      },
+      "Register": {
+        "Title": "Register",
+        "ButtonText": "Sign in",
+        "Message": {
+          "Register": {
+            "SuccessText": "Register Successfully",
+            "ErrorText": {
+              "message": "Failed to Register",
+              "description": "Unknown Error"
+            }
+          }
+        }
+      }
+    },
+    "Show": {
+      "Message": {
+        "ErrorText": {
+          "message": "Failed to get list",
+          "description": "Unknown Error"
+        }
+      }
+      
+    },
+    "Detail": {
+      "Catalog": "Catalog",
+      "Default": {
+        "Title": "Default Title",
+        "Intro": "Default Introduction",
+        "Content": "Default Content"
+      },
+      "Message": {
+        "ErrorText": {
+          "message": "Failed to get article content",
+          "description": "Unknown Error"
+        }
+      }
+    }
+  },
+  "routes": {
+    "Show": {
+      "Blog": "Blog",
+      "Book": "Book",
+      "Projects": "Projects",
+      "Archives": "Archives",
+      "Sponsors": "Sponsors",
+      "About": "About"
+    },
+    "Manage": {
+      "Login": "Login",
+      "Register": "Register",
+      "Edit": "Edit",
+      "Manage": "Manage"
+    },
+    "Index": {
+      "Detail": "Detail"
+    }
+  }
+}

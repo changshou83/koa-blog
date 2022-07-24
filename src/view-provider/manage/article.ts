@@ -11,27 +11,27 @@ export const paginationConfig = reactive<TablePaginationConfig>({
 });
 export const columns = [
   {
-    title: '标题',
+    title: 'Title',
     dataIndex: 'title',
     key: 'title',
   },
   {
-    title: '创建时间',
+    title: 'CreatedAt',
     dataIndex: 'createdAt',
     key: 'createdAt',
   },
   {
-    title: '修改时间',
+    title: 'UpdatedAt',
     dataIndex: 'updatedAt',
     key: 'updatedAt',
   },
   {
-    title: '类型',
+    title: 'Type',
     key: 'articleType',
     dataIndex: 'articleType',
   },
   {
-    title: '编辑',
+    title: 'Edit',
     key: 'edit',
   },
 ];

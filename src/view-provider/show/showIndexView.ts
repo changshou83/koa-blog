@@ -19,27 +19,27 @@ export const showIndexConfig = {
   hideList: ['ShowBlog'],
   buttonGroup: [
     {
-      text: '日志',
+      text: 'Logs',
       icon: h(BookOutlined),
       handle: routePathToPage('/show/blogs/1'),
     },
     {
-      text: '读书',
+      text: 'Books',
       icon: h(ReadOutlined),
       handle: routePathToPage('/show/books/1'),
     },
     {
-      text: '项目',
+      text: 'Projects',
       icon: h(ScheduleOutlined),
       handle: routeNameToPage('ShowProject'),
     },
     {
-      text: '归档',
+      text: 'Archives',
       icon: h(SisternodeOutlined),
       handle: routeNameToPage('ShowFile'),
     },
     {
-      text: '赞助列表',
+      text: 'Sponsors',
       icon: h(LikeOutlined),
       handle: routeNameToPage('ShowList'),
     },

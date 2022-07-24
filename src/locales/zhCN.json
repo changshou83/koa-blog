@@ -1,0 +1,200 @@
+{
+  "components": {
+    "view-header": {
+      "Back Home": "返回首页"
+    },
+    "button-group": {
+      "Logs": "日志",
+      "Books": "读书",
+      "Projects": "项目",
+      "Archives": "归档",
+      "Sponsors": "赞助列表"
+    },
+    "header": {
+      "Home": "首页",
+      "Manage": "管理",
+      "Create": "创作",
+      "About": "关于我",
+      "Logout": "登出"
+    },
+    "lang-select": {
+      "Languages": "切换语言",
+      "chinese": "中文",
+      "english": "英文"
+    },
+    "publish-modal": {
+      "Title": "文章发布设置",
+      "ButtonText": "点击上传",
+      "ExtraText": "一旦上传，只可在更新时可修改",
+      "Label": {
+        "Title": "标题",
+        "Intro": "简介",
+        "HeadImage": "文章头图",
+        "Type": "类型"
+      },
+      "PlaceHolder": {
+        "Title": "标题",
+        "Intro": "简介"
+      },
+      "RadioGroup": {
+        "Blog": "日志",
+        "Book": "读书"
+      },
+      "Rules": {
+        "Title": "标题为必填",
+        "Intro": "简介为必填"
+      },
+      "Message": {
+        "BeforeUpload": {
+          "ErrorText": {
+            "message": "上传图片失败",
+            "description": "上传头像图片大小不能超过 2MB!"
+          }
+        },
+        "UploadImage": {
+          "SuccessText": "上传图片成功",
+          "ErrorText": {
+            "message": "上传图片失败",
+            "description": "未知错误"
+          }
+        }
+      }
+    }
+  },
+  "pages": {
+    "Manage": {
+      "Article": {
+        "Title": "标题",
+        "CreatedAt": "创建时间",
+        "UpdatedAt": "修改时间",
+        "Type": "类型",
+        "Edit": "编辑",
+        "Delete": "删除",
+        "Update": "更新",
+        "Scan": "查看"
+      },
+      "Editor": {
+        "Clear": "清空",
+        "Update": "更新",
+        "Publish": "发布",
+        "PlaceHolder": "请输入内容...",
+        "Confirm": {
+          "Title": "清空文档",
+          "Content": "被清除的文档将不会被恢复",
+          "OkText": "确认",
+          "CancelText": "取消",
+          "SuccessText": {
+            "message": "草稿",
+            "description": "已清空"
+          },
+          "ErrorText": {
+            "message": "草稿",
+            "description": "已撤销清空"
+          }
+        },
+        "Message": {
+          "DefaultError": "未知错误",
+          "Update": {
+            "SuccessText": "更新成功",
+            "ErrorText": {
+              "message": "更新失败"
+            }
+          },
+          "Publish": {
+            "SuccessText": "发布成功",
+            "ErrorText": {
+              "message": "发布失败"
+            }
+          },
+          "Show": {
+            "ErrorText": {
+              "message": "文章内容获取失败"
+            }
+          }
+        }
+      },
+      "Login": {
+        "Title": "登录",
+        "ButtonText": "登录",
+        "toRegister": "没有账号？快注册一个吧！",
+        "PlaceHolder": {
+          "Username": "用户名",
+          "Password": "密码"
+        },
+        "Rules": {
+          "username": "username为必填",
+          "password": "password至少包含大小写字母和数字，长度为8-16"
+        },
+        "Message": {
+          "Login": {
+            "SuccessText": "登录成功",
+            "ErrorText": {
+              "message": "登陆失败",
+              "description": "未知错误"
+            }
+          },
+          "Logout": {
+            "SuccessText": "登出成功",
+            "ErrorText": {
+              "message": "请先登录"
+            }
+          }
+        }
+      },
+      "Register": {
+        "Title": "注册",
+        "ButtonText": "注册",
+        "Message": {
+          "Register": {
+            "SuccessText": "注册成功",
+            "ErrorText": {
+              "message": "注册失败",
+              "description": "未知错误"
+            }
+          }
+        }
+      }
+    },
+    "Show": {
+      "Message": {
+        "ErrorText": {
+          "message": "获取失败",
+          "description": "未知错误"
+        }
+      }
+    },
+    "Detail": {
+      "Catalog": "目录",
+      "Default": {
+        "Title": "默认标题",
+        "Intro": "默认简介",
+        "Content": "默认内容"
+      },
+      "Message": {
+        "ErrorText": {
+          "message": "文章内容获取失败",
+          "description": "未知错误"
+        }
+      }
+    }
+  },
+  "routes": {
+    "Show": {
+      "Blog": "博客",
+      "Book": "读书笔记",
+      "Projects": "我的项目",
+      "Archives": "我的归档",
+      "Sponsors": "赞助列表",
+      "About": "关于我"
+    },
+    "Manage": {
+      "Login": "登录",
+      "Register": "注册",
+      "Edit": "编辑文章",
+      "Manage": "管理文章"
+    },
+    "Index": {
+      "Detail": "文章详情"
+    }
+  }
+}

@@ -1,6 +1,7 @@
 <script lang='ts' setup>
 import { Avatar, GroupItem } from '@/types';
 import { PageHeader } from 'ant-design-vue';
+import LangSelect from '@/components/LangSelect.vue';
 
 export interface HeaderConfig {
   avatar: Avatar;
@@ -22,7 +23,8 @@ const isScroll = useWindowScrollStatus()
       <a-tag v-for="tag of tags" :key="tag.text" :color="tag.color">{{tag.text}}</a-tag>
     </template>
     <template #extra>
-      <a-button v-for="item of menu" :key="item.text" :type="item.type" @click="item.handle">{{item.text}}</a-button>
+      <a-button v-for="item of menu" :key="item.text" :type="item.type" @click="item.handle">{{$t(`components.header.${item.text}`)}}</a-button>
+      <lang-select></lang-select>
     </template>
   </page-header>
 </template>

@@ -16,44 +16,44 @@ export const appViewConfig = {
     },
     {
       color: 'cyan',
-      text: 'eggjs',
+      text: 'koa',
     },
   ],
   menu: [
     {
-      text: '首页',
+      text: 'Home',
       handle: routePathToPage('/show/blogs/1'),
     },
     {
-      text: '管理',
+      text: 'Manage',
       handle: routePathToPage('/manage/articles/1'),
     },
     {
-      text: '创作',
+      text: 'Create',
       handle: routePathToPage('/manage/editor'),
     },
     {
-      text: '关于我',
+      text: 'About',
       handle: routePathToPage('/show/about'),
       type: 'primary',
     },
     {
-      text: '登出',
+      text: 'Logout',
       type: 'danger',
       handle: () => {
         const user = useUserStore();
         const message = useMessage();
+        const template = (key: string) => t(`pages.Manage.Login.Message.Logout.${key}`)
         if(user.token) {
           user.logout();
           message.success({
-            message: '登出成功'
+            message: template("SuccessText")
           })
           routePathToPage('/manage/login')();
         } else {
           message.error({
-            message: '请先登录'
+            message: template("ErrorText.message")
           })
-
         }
       }
     },

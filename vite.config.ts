@@ -9,7 +9,9 @@ import {
   AndDesignVueResolve,
 } from 'vite-plugin-style-import';
 import { visualizer } from 'rollup-plugin-visualizer';
+import { vueI18n } from '@intlify/vite-plugin-vue-i18n'
 import { fileURLToPath, URL } from 'url';
+import { resolve, dirname } from 'node:path';
 
 export default defineConfig({
   plugins: [
@@ -17,6 +19,10 @@ export default defineConfig({
       reactivityTransform: true, // 开启prop默认值
     }),
     vueJsx(),
+    vueI18n({
+      // 资源预构建
+      include: resolve(dirname(fileURLToPath(import.meta.url)), './src/locales/**'),
+    }),
     AutoImport({
       include: [
         /\.[tj]sx?$/,
@@ -25,13 +31,14 @@ export default defineConfig({
       imports: [
         'vue',
         'vue-router',
-        'pinia'
+        'pinia',
+        'vue-i18n'
       ],
       dirs: [
         'src/composables',
-        'src/composables/core',
-        'src/composables/event',
         'src/composables/utils',
+        'src/composables/event',
+        'src/composables/core',
         'src/utils',
         'src/utils/common',
         'src/utils/route',
@@ -50,7 +57,8 @@ export default defineConfig({
         {
           libraryName: 'ant-design-vue',
           resolveStyle: name => {
-            if (name === 'radio-group') return '';
+            const ignoreList = ['radio-group', 'menu-item']
+            if (ignoreList.includes(name)) return '';
             return `ant-design-vue/es/${name}/style/css`;
           },
         },

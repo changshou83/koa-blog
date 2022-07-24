@@ -8,6 +8,7 @@ import type { FormProps } from 'ant-design-vue';
 import type { Rule } from 'ant-design-vue/es/form';
 import { LoginForm } from '@/types';
 
+const template = (key: string) => t(`pages.Manage.Login.${key}`)
 const user = useUserStore();
 const formState = reactive<LoginForm>({
   username: '',
@@ -17,12 +18,12 @@ const formState = reactive<LoginForm>({
 const rules = reactive<Record<string, Rule[]>>({
   username: [{
     required: true,
-    message: "username为必填"
+    message: template('Rules.username')
   }],
   password: [{
     required: true,
     pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[^]{8,16}$/,
-    message: "password至少包含大小写字母和数字，长度为8-16"
+    message: template('Rules.password')
   }]
 })
 
@@ -43,15 +44,15 @@ const handleSubmit: FormProps['onSubmit'] = async () => {
   try {
     await user.login(formState)
     Message.success({
-      message: '登录成功',
+      message: template('Message.Login.SuccessText'),
       duration: 0.5
     })
     setTimeout(toArticlePage, 1000)
   } catch(err: any) {
     formState.password = '';
     Message.error({
-      message: "登陆失败",
-      description: err.reason || '未知错误',
+      message: template('Message.Login.ErrorText.message'),
+      description: err.reason || template('Message.Login.ErrorText.description'),
       duration: 2
     })
   }
@@ -69,15 +70,15 @@ const toRegister = routePathToPage('/manage/register');
       @submit="handleSubmit"
     >
       <a-form-item>
-        <h2 class="form-title">Login</h2>
+        <h2 class="form-title">{{template('Title')}}</h2>
       </a-form-item>
       <a-form-item v-bind="validateInfos.username">
-        <a-input class="input-username" v-model:value="formState.username" placeholder="Username">
+        <a-input class="input-username" v-model:value="formState.username" :placeholder="template('PlaceHolder.Username')">
           <template #prefix><UserOutlined style="color: rgba(0, 0, 0, 0.25)" /></template>
         </a-input>
       </a-form-item>
       <a-form-item v-bind="validateInfos.password">
-        <a-input-password class="input-password" v-model:value="formState.password" type="password" placeholder="Password">
+        <a-input-password class="input-password" v-model:value="formState.password" type="password" :placeholder="template('PlaceHolder.Password')">
           <template #prefix><LockOutlined style="color: rgba(0, 0, 0, 0.25)" /></template>
         </a-input-password>
       </a-form-item>
@@ -88,11 +89,11 @@ const toRegister = routePathToPage('/manage/register');
           block
           :disabled="!canLogin"
         >
-          Log in
+          {{template('ButtonText')}}
         </a-button>
       </a-form-item>
       <a-form-item>
-        <div @click="toRegister" class="to-register"><p>没有账号？快注册一个吧！</p></div>
+        <div @click="toRegister" class="to-register"><p>{{template('toRegister')}}</p></div>
       </a-form-item>
     </a-form>
   </main>

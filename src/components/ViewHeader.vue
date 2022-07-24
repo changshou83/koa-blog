@@ -30,7 +30,7 @@ const backHome = routePathToPage('/show/blogs/1')
       <transition name="fade" mode="out-in">
         <a-button type="primary" v-if="!onHideList" @click="backHome">
           <LeftSquareOutlined />
-          返回首页
+          {{$t("components.view-header['Back Home']")}}
         </a-button>
         <div v-else style="display: none;"></div>
       </transition>

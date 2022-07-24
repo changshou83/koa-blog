@@ -17,7 +17,7 @@ const routes: AppRouteRecordRaw[] = [
     name: 'Details',
     component: () => import('@/views/details/index.vue'),
     meta: {
-      title: '文章详情',
+      title: t('routes.Index.Detail'),
       auth: true
     }
   },

@@ -10,7 +10,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const meta = to.meta as AppRouteMetaConfig;
-  document.title = meta.title ? `blog-${meta.title}` : 'koa-blog';
+  document.title = meta.title ? `${meta.title}` : 'koa-blog';
 
   const { token } = useUserStore()
   if(meta && meta.auth && !token) {

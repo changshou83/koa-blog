@@ -17,12 +17,13 @@ const [draft, stop] = useLocalStorage('draft')
 const valueHtml = draft;
 const mode = ref('simple')
 const Message = useMessage();
+const template = (key: string) => t(`pages.Manage.Editor.${key}`)
 
 // 编辑器Ref和编辑器配置
 const beforeEditorDestroy = () => stop()
 const editorRef = useEditor(beforeEditorDestroy)
 const toolbarConfig = { excludeKeys: ['fullScreen'] }
-const editorConfig = { placeholder: '请输入内容...' }
+const editorConfig = { placeholder: template('PlaceHolder') }
 
 const handleCreated = (editor: IDomEditor) => editorRef.value = editor;
 const handleChange = useDebounceFn((editor: IDomEditor) => {
@@ -38,7 +39,7 @@ const showModal = () => modal.value?.setVisible(true)
 // 更新相关
 const { query: { id } } = useRoute()
 const isUpdate = Boolean(id)
-const submitButtonText = isUpdate ? '更新' : '发布'
+const submitButtonText = isUpdate ? 'Update' : 'Publish'
 // 请求API
 const createSubmit = (submitResult: any, msg: string[], onSuccess: FunctionArgs = () => {}): Promise<void> => 
   submitResult
@@ -58,7 +59,7 @@ const createSubmit = (submitResult: any, msg: string[], onSuccess: FunctionArgs 
     .catch((err: ResponseConfig) => {
       Message.error({
         message: msg[1],
-        description: err?.reason || '未知错误'
+        description: err?.reason || template('Message.DefaultError')
       })
     })
     .finally(() => {
@@ -70,12 +71,12 @@ if(isUpdate) submit = (state: EditorForm) =>
   createSubmit(Update(Number(id), {
     ...state,
     content: valueHtml.value
-  }), ['更新成功', '更新失败'])
+  }), [template('Message.Update.SuccessText'), template('Message.Update.ErrorText.message')])
 else submit = (state: EditorForm) => 
   createSubmit(Create({
     ...state,
     content: valueHtml.value
-  }), ['发布成功', '发布失败'])
+  }), [template('Message.Publish.SuccessText'), template('Message.Publish.ErrorText.message')])
 
 const [loading, loadingPublish] = useLoading(submit)
 const publish = (state: EditorForm) => loadingPublish(state)
@@ -98,8 +99,8 @@ if(isUpdate) {
       })
       .catch((err) => {
         Message.error({
-          message: '文章内容获取失败',
-          description: err.data || err.reason || '未知错误'
+          message: template('Message.Show.ErrorText.message'),
+          description: err.data || err.reason || template('Message.DefaultError')
         })
       })
   })
@@ -129,8 +130,8 @@ if(isUpdate) {
       </div>
     </div>
     <section class="actions">
-      <a-button type="primary" @click="showModal">{{ submitButtonText }}</a-button>
-      <a-button type="danger" @click="clear">清空</a-button>
+      <a-button type="primary" @click="showModal">{{ template(submitButtonText) }}</a-button>
+      <a-button type="danger" @click="clear">{{template('Clear')}}</a-button>
     </section>
     <publish-modal ref="modal" @publish="publish" :loading="loading"/>
   </main>

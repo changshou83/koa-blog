@@ -70,6 +70,7 @@ const destroy = (id: number) =>
     })
 const check = (id: number) => routePathToPage(`/details/${id}`)()
 const update = (id: number) => routePathToPage(`/manage/editor`, { query: { id } })()
+const template = (key: string) => t(`pages.Manage.Article.${key}`)
 </script>
 
 <template>
@@ -84,7 +85,7 @@ const update = (id: number) => routePathToPage(`/manage/editor`, { query: { id }
       row-key="id"
     >
       <template #headerCell="{ column }">
-          <span>{{column.title}}</span>
+          <span>{{template(column.title)}}</span>
       </template>
 
       <template #bodyCell="{ column, record }">
@@ -105,9 +106,9 @@ const update = (id: number) => routePathToPage(`/manage/editor`, { query: { id }
           </span>
         </template>
         <template v-else-if="column.key === 'edit'">
-          <a-button class="mx-1" type="danger" @click="DestoryConfirm(record.id)">删除</a-button>
-          <a-button class="mx-1" type="primary" @click="update(record.id)">更新</a-button>
-          <a-button class="mx-1" @click="check(record.id)">查看</a-button>
+          <a-button class="mx-1" type="danger" @click="DestoryConfirm(record.id)">{{template('Delete')}}</a-button>
+          <a-button class="mx-1" type="primary" @click="update(record.id)">{{template('Update')}}</a-button>
+          <a-button class="mx-1" @click="check(record.id)">{{template('Scan')}}</a-button>
         </template>
       </template>
     </c-table>
@@ -118,7 +119,5 @@ const update = (id: number) => routePathToPage(`/manage/editor`, { query: { id }
 .articles {
   margin: 10px;
   padding: 10px;
-  /* border-radius: 8px;
-  border: 2px solid #cfd8dc; */
 }
 </style>

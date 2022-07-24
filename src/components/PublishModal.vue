@@ -5,6 +5,7 @@ import { EditOutlined, ContainerOutlined, UploadOutlined } from '@ant-design/ico
 import type { Rule } from 'ant-design-vue/es/form';
 import { EditorForm } from '@/types'
 
+const template = (key: string) => t(`components.publish-modal.${key}`)
 // 表单数据处理
 const [formState, setFormState] = useState<EditorForm>({
   title: '',
@@ -16,11 +17,11 @@ const [formState, setFormState] = useState<EditorForm>({
 const rules = ref<Record<string, Rule[]>>({
   title: [{
     required: true,
-    message: "标题为必填"
+    message: template('Rules.Title')
   }],
   intro: [{
     required: true,
-    message: "简介为必填"
+    message: template('Rules.Intro')
   }],
 })
 const { validateInfos } = Form.useForm(formState, rules)
@@ -58,8 +59,8 @@ const beforeUpload: UploadProps['beforeUpload'] = file => {
   const isLt2M = file.size! < 2 * 1024 * 1024;
   if (!isLt2M) {
     Message.error({
-      message: "上传图片失败",
-      description: "上传头像图片大小不能超过 2MB!"
+      message: template('Message.BeforeUpload.ErrorText.message'),
+      description: template('Message.BeforeUpload.ErrorText.description')
     });
   }
   if(!isLt2M) return Promise.reject();
@@ -83,7 +84,7 @@ const uploadToQiNiu = (options: any) => {
   uploadImage(file)
     .then((url: string) => {
       Message.success({
-        message: "上传图片成功",
+        message: template('Message.UploadImage.SuccessText'),
       })
       onSuccess();
       uploaded.value = true;
@@ -91,8 +92,8 @@ const uploadToQiNiu = (options: any) => {
     })
     .catch((err) => {
       Message.error({
-        message: "上传图片失败",
-        description: err.reason || '未知错误'
+        message: template('Message.UploadImage.ErrorText.message'),
+        description: err.reason || template('Message.UploadImage.ErrorText.description')
       })
       onError();
     })
@@ -101,7 +102,7 @@ const uploadToQiNiu = (options: any) => {
 
 <template>
   <modal
-    title="文章发布设置"
+    :title="template('Title')"
     :ok-button-props="{ loading, disabled: !canPublish }"
     v-model:visible="visible"
     @ok="submit(formState)"
@@ -109,17 +110,17 @@ const uploadToQiNiu = (options: any) => {
       <a-form
         :model="formState"
       >
-        <a-form-item label="标题" v-bind="validateInfos.title">
-          <a-input v-model:value="formState.title" placeholder="标题">
+        <a-form-item :label="template('Label.Title')" v-bind="validateInfos.title">
+          <a-input v-model:value="formState.title" :placeholder="template('PlaceHolder.Title')">
             <template #prefix><EditOutlined style="color: rgba(0, 0, 0, 0.25)" /></template>
           </a-input>
         </a-form-item>
-        <a-form-item label="简介" v-bind="validateInfos.intro">
-          <a-input v-model:value="formState.intro" placeholder="简介">
+        <a-form-item :label="template('Label.Intro')" v-bind="validateInfos.intro">
+          <a-input v-model:value="formState.intro" :placeholder="template('PlaceHolder.Intro')">
             <template #prefix><ContainerOutlined style="color: rgba(0, 0, 0, 0.25)" /></template>
           </a-input>
         </a-form-item>
-        <a-form-item name="upload" label="文章头图" extra="一旦上传，只可在更新时可修改">
+        <a-form-item name="upload" :label="template('Label.HeadImage')" :extra="template('ExtraText')">
           <Upload
             accept="image/png, image/jpeg"
             list-type="picture"
@@ -131,15 +132,14 @@ const uploadToQiNiu = (options: any) => {
           >
             <a-button :disabled="uploaded">
               <template #icon><UploadOutlined /></template>
-              点击上传
+              {{template('ButtonText')}}
             </a-button>
           </Upload>
         </a-form-item>
-        <a-form-item>
-          类型：
+        <a-form-item :label="template('Label.Type')">
           <radio-group v-model:value="formState.articleType">
-            <radio value="blog">日志</radio>
-            <radio value="book">读书</radio>
+            <radio value="blog">{{template('RadioGroup.Blog')}}</radio>
+            <radio value="book">{{template('RadioGroup.Book')}}</radio>
           </radio-group>
         </a-form-item>
       </a-form>

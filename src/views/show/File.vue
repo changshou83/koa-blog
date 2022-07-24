@@ -5,7 +5,7 @@ import { getRandomColor } from '@/utils/common/getRandomColor';
 import { fileRecordConfig } from '@/types';
 
 const cardRecords = ref<fileRecordConfig[] | []>([])
-
+const template = (key: string) => t(`pages.Show.${key}`)
 watchEffect(() => {
   Archive()
     .then((data) => {
@@ -15,8 +15,8 @@ watchEffect(() => {
     })
     .catch((err) => {
       useMessage().info({
-        message: '获取失败',
-        description: err.reason || '未知错误'
+        message: template('Message.ErrorText.message'),
+        description: err.reason || template('Message.ErrorText.description')
       })
     })
 })
