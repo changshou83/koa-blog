@@ -1,10 +1,10 @@
-const statePrefox = (id: string) => `pinia-${id}`
+const statePrefox = (id: string) => `pinia-${id}`;
 
 export function setPiniaState(key: string, state: any) {
-  localStorage.setItem(statePrefox(key), JSON.stringify(state))
-  return state
+  localStorage.setItem(statePrefox(key), JSON.stringify(state));
+  return state;
 }
 
 export function getPiniaState(id: string) {
-  return JSON.parse(localStorage.getItem(statePrefox(id)) || '{}')
+  return JSON.parse(localStorage.getItem(statePrefox(id)) || '{}');
 }

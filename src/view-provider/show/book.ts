@@ -1,5 +1,5 @@
-import { ArticleInfo } from "@/types";
-import { ref } from "vue";
+import { ArticleInfo } from '@/types';
+import { ref } from 'vue';
 
 export const bookViewConfig = {
   cardRecords: ref<ArticleInfo[]>([]),

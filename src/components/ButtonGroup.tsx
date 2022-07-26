@@ -1,5 +1,5 @@
 import { ButtonGroupItem } from '@/types';
-import { useI18n } from 'vue-i18n'
+import { useI18n } from 'vue-i18n';
 
 export const createButtonGroup = (group: ButtonGroupItem[] = []) => {
   return defineComponent({
@@ -7,11 +7,11 @@ export const createButtonGroup = (group: ButtonGroupItem[] = []) => {
       const { t } = useI18n({
         useScope: 'global',
         inheritLocale: true
-      })
+      });
 
       return () => (
         <section style={{ textAlign: 'center' }}>
-          {group.map(item => (
+          {group.map((item) => (
             <a-button style={{ margin: '8px' }} onClick={item.handle}>
               {item.icon}
               {t(`components.button-group.${item.text}`)}
@@ -19,6 +19,6 @@ export const createButtonGroup = (group: ButtonGroupItem[] = []) => {
           ))}
         </section>
       );
-    },
+    }
   });
 };

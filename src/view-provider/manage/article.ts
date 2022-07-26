@@ -4,36 +4,34 @@ import { ArticleType } from '@/types';
 
 export const colorMap: Record<ArticleType, string> = {
   book: 'volcano',
-  blog: 'geekblue',
+  blog: 'geekblue'
 };
 export const paginationConfig = reactive<TablePaginationConfig>({
-  pageSize: 5,
+  pageSize: 5
 });
 export const columns = [
   {
     title: 'Title',
     dataIndex: 'title',
-    key: 'title',
+    key: 'title'
   },
   {
     title: 'CreatedAt',
     dataIndex: 'createdAt',
-    key: 'createdAt',
+    key: 'createdAt'
   },
   {
     title: 'UpdatedAt',
     dataIndex: 'updatedAt',
-    key: 'updatedAt',
+    key: 'updatedAt'
   },
   {
     title: 'Type',
     key: 'articleType',
-    dataIndex: 'articleType',
+    dataIndex: 'articleType'
   },
   {
     title: 'Edit',
-    key: 'edit',
-  },
+    key: 'edit'
+  }
 ];
-
-

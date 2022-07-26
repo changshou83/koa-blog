@@ -10,7 +10,7 @@ export interface UserInfo {
   token?: string;
 }
 
-export type ArticleType = 'book' | 'blog'
+export type ArticleType = 'book' | 'blog';
 export interface ArticleInfo {
   id?: number;
   title: string;
@@ -23,10 +23,16 @@ export interface ArticleInfo {
 }
 
 // CardList 组件的Item所需数据
-export type CardItem = Pick<ArticleInfo, 'id' | 'title' | 'createdAt' | 'intro' | 'headImg'>
+export type CardItem = Pick<
+  ArticleInfo,
+  'id' | 'title' | 'createdAt' | 'intro' | 'headImg'
+>;
 
 // 上传及发布文章时的表单数据
-export type EditorForm = Pick<ArticleInfo, 'title' | 'intro' | 'articleType' | 'headImg'> 
+export type EditorForm = Pick<
+  ArticleInfo,
+  'title' | 'intro' | 'articleType' | 'headImg'
+>;
 
 export interface LoginForm {
   username: string;
@@ -37,7 +43,7 @@ export interface LoginForm {
 export interface fileRecordConfig {
   id: number;
   month: string;
-  data: (Omit<CardItem, 'intro'> & { id: number })[]
+  data: (Omit<CardItem, 'intro'> & { id: number })[];
 }
 
 // 各种Item
@@ -50,7 +56,7 @@ export interface GroupItem {
 }
 
 // ViewHeader 组件的按钮组
-export type ButtonGroupItem = Pick<GroupItem, 'icon' | 'text' | 'handle'>
+export type ButtonGroupItem = Pick<GroupItem, 'icon' | 'text' | 'handle'>;
 
 export interface DomainOptions {
   url: string;
@@ -65,11 +71,11 @@ export interface PaginationConfig {
 
 export type ArticleIndexParams = PaginationConfig & {
   userId: number;
-} 
+};
 
 export interface CatalogNode {
   title: string;
   tag: string;
   children: CatalogNode[];
   id: string; // 标题元素的id属性值，用于跳转到文章指定标题位置
-};
+}

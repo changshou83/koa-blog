@@ -8,8 +8,8 @@ export function useMessage() {
     success: useNotice('success'),
     info: useNotice('info'),
     warning: useNotice('warning'),
-    error: useNotice('error'),
-  }
+    error: useNotice('error')
+  };
 
-  return Message
+  return Message;
 }

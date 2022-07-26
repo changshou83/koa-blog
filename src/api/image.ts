@@ -1,13 +1,16 @@
-import { ResponseConfig } from "@/types";
+/* eslint-disable no-async-promise-executor */
+import { ResponseConfig } from '@/types';
 import { Token } from '@/model/image';
 import axios from 'axios';
 
 /**
  * 获取七牛云上传图片用的token
- * @returns 
+ * @returns
  */
-export function uploadToken(): Promise<ResponseConfig<{ token: string, key: string }>> {
-  return http.get('/imgToken')
+export function uploadToken(): Promise<
+  ResponseConfig<{ token: string; key: string }>
+> {
+  return http.get('/imgToken');
 }
 
 /**
@@ -15,28 +18,32 @@ export function uploadToken(): Promise<ResponseConfig<{ token: string, key: stri
  * @param file - 图片数据
  */
 export async function uploadImage(file: Blob) {
-  let data = await Token();
+  const data = await Token();
 
-  if(data) {
-    let { token, key } = data
-  
+  if (data) {
+    // eslint-disable-next-line prefer-const
+    let { key, token } = data;
+
     return new Promise<string>(async (resolve, reject) => {
       key = 'koa-blog/articles/' + key;
-      
+
       const formData = new FormData();
       formData.append('token', token);
       formData.append('key', key);
       formData.append('file', file);
 
-      const { data, status } = await axios.post('http://upload-z1.qiniu.com', formData);
+      const { data, status } = await axios.post(
+        'http://upload-z1.qiniu.com',
+        formData
+      );
 
-      if(status === 200) {
+      if (status === 200) {
         resolve('http://cdn.changshou83.site/' + data.key);
       } else {
-        reject({reason: '上传图片出错'});
+        reject({ reason: '上传图片出错' });
       }
     });
   } else {
-    return Promise.reject({reason: '图片上传凭证获取错误'});
+    return Promise.reject({ reason: '图片上传凭证获取错误' });
   }
 }

@@ -1,4 +1,4 @@
-import { FunctionArgs } from '@/types'
+import { FunctionArgs } from '@/types';
 
 /**
  * 防抖处理

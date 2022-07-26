@@ -1,16 +1,16 @@
-import ShowRouter from './show'
-import ManageRouter from './manage'
+import ShowRouter from './show';
+import ManageRouter from './manage';
 import { AppRouteRecordRaw } from '../types/router';
 
 const routes: AppRouteRecordRaw[] = [
   {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
-    component: () => import('@/views/common/NotFound.vue'),
+    component: () => import('@/views/common/NotFound.vue')
   },
   {
     path: '/',
-    redirect: '/show',
+    redirect: '/show'
   },
   {
     path: '/details/:id',
@@ -22,7 +22,7 @@ const routes: AppRouteRecordRaw[] = [
     }
   },
   ShowRouter,
-  ManageRouter,
+  ManageRouter
 ];
 
 export default routes;

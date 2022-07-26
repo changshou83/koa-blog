@@ -1,6 +1,6 @@
 import { AppRouteRecordRaw } from '@/types';
 
-const template = (key: string) => t(`routes.Manage.${key}`)
+const template = (key: string) => t(`routes.Manage.${key}`);
 const ManageRouter: AppRouteRecordRaw = {
   path: '/manage',
   name: 'Manage',
@@ -8,7 +8,7 @@ const ManageRouter: AppRouteRecordRaw = {
   children: [
     {
       path: '',
-      redirect: '/manage/articles/1',
+      redirect: '/manage/articles/1'
     },
     {
       path: 'login',
@@ -43,8 +43,8 @@ const ManageRouter: AppRouteRecordRaw = {
         title: template('Manage'),
         auth: true
       }
-    },
-  ],
-}
+    }
+  ]
+};
 
 export default ManageRouter;

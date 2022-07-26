@@ -10,7 +10,7 @@ import {
   Avatar,
   Button,
   Timeline,
-  Pagination,
+  Pagination
 } from 'ant-design-vue';
 
 const plugins: Plugin[] = [router, store, i18n];
@@ -22,7 +22,7 @@ const componentsPlugins: Plugin[] = [
   Avatar,
   Button,
   Timeline,
-  Pagination,
+  Pagination
 ];
 
 /**

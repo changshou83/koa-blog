@@ -1,5 +1,5 @@
 import { ref, watchEffect } from 'vue';
-import type { UnwrapRef, Ref } from 'vue'
+import type { UnwrapRef, Ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { MaybeArray } from '@/types';
 
@@ -17,7 +17,7 @@ export const useLinkedRouteParam = <Param extends MaybeArray<string | number>>(
   const currParam = ref<Param>('' as Param);
 
   watchEffect(() => {
-    let param = route.params[paramName];
+    const param = route.params[paramName];
     currParam.value = (isNumber ? Number(param) : param) as UnwrapRef<Param>;
   });
 

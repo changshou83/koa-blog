@@ -6,32 +6,35 @@ import { useLangStore } from '@/store/lang';
 const instance = axios.create({
   timeout: 10000,
   baseURL: baseURL
-})
+});
 
 // 请求拦截
-instance.interceptors.request.use((config: AxiosRequestConfig) => {
-  const user = useUserStore()
-  const lang = useLangStore()
-  user.token && (config.headers!.authorization = user.authorization)
-  lang.curr && (config.headers!['Accept-language'] = lang.curr)
-  
-  return config;
-}, (err: AxiosError) =>  Promise.reject(err))
+instance.interceptors.request.use(
+  (config: AxiosRequestConfig) => {
+    const user = useUserStore();
+    const lang = useLangStore();
+    user.token && (config.headers!.authorization = user.authorization);
+    lang.curr && (config.headers!['Accept-language'] = lang.curr);
+
+    return config;
+  },
+  (err: AxiosError) => Promise.reject(err)
+);
 
 // 响应拦截
 instance.interceptors.response.use(
   (res: AxiosResponse) => {
-    const { status, data } = res
+    const { status, data } = res;
     const validCode = [200, 201, 204];
-    if(validCode.includes(status)) {
-      return Promise.resolve(data)
+    if (validCode.includes(status)) {
+      return Promise.resolve(data);
     } else {
-      return Promise.reject(data)
+      return Promise.reject(data);
     }
   },
   async (err: AxiosError) => {
-    const user = useUserStore()
-    if(err.response && err.response.status === 401 && user.refresh_token) {
+    const user = useUserStore();
+    if (err.response && err.response.status === 401 && user.refresh_token) {
       // token 过期
       try {
         const { data: res } = await userExchangeToken(user.refresh_token);
@@ -46,14 +49,14 @@ instance.interceptors.response.use(
       }
     }
 
-    return Promise.reject(err.response!.data)
+    return Promise.reject(err.response!.data);
   }
-)
+);
 
 export const lazyRequest = <Arg = any>(request: Promise<Arg>, delay = 1000) => {
-  const lazy = new Promise(resolve => setTimeout(resolve, delay));
+  const lazy = new Promise((resolve) => setTimeout(resolve, delay));
 
-  return Promise<Arg>.all([request, lazy])
-}
+  return Promise<Arg>.all([request, lazy]);
+};
 
-export default instance
+export default instance;

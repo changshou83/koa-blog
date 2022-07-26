@@ -5,11 +5,11 @@ export const useLangStore = defineStore('lang', {
   }),
   actions: {
     change(newLang: string) {
-      if(newLang !== this.curr) {
+      if (newLang !== this.curr) {
         this.curr = newLang;
         // 主动刷新页面，重新读取语言设置
         location.reload();
       }
     }
   }
-})
+});

@@ -11,9 +11,9 @@ export const projectList = [
       handle: () => {
         toGithubProject({
           user: 'changshou83',
-          projectName: 'studyEveryday',
-        })
-      },
+          projectName: 'studyEveryday'
+        });
+      }
     },
     {
       id: 2,
@@ -22,9 +22,9 @@ export const projectList = [
       handle: () => {
         toGithubProject({
           user: 'changshou83',
-          projectName: 'webpageDesign_homework',
-        })
-      },
+          projectName: 'webpageDesign_homework'
+        });
+      }
     },
     {
       id: 3,
@@ -33,10 +33,10 @@ export const projectList = [
       handle: () => {
         toGithubProject({
           user: 'changshou83',
-          projectName: 'vitepress-starter',
-        })
-      },
-    },
+          projectName: 'vitepress-starter'
+        });
+      }
+    }
   ],
   [
     {
@@ -46,9 +46,9 @@ export const projectList = [
       handle: () => {
         toGithubProject({
           user: 'changshou83',
-          projectName: 'formValidator',
-        })
-      },
-    },
+          projectName: 'formValidator'
+        });
+      }
+    }
   ]
-]
+];

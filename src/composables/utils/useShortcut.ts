@@ -1,5 +1,5 @@
 import keymaster from 'keymaster';
-import { FunctionArgs } from '@/types'
+import { FunctionArgs } from '@/types';
 import { onBeforeUnmount, onMounted } from 'vue';
 
 const bindKeyHandler = (fn: FunctionArgs) => () => {
@@ -10,7 +10,7 @@ const bindKeyHandler = (fn: FunctionArgs) => () => {
 const shortcut = {
   bind: (seed: string, func: FunctionArgs) =>
     keymaster(seed, bindKeyHandler(func)),
-  ...keymaster,
+  ...keymaster
 };
 
 /**

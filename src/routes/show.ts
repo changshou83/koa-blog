@@ -1,6 +1,6 @@
 import { AppRouteRecordRaw } from '@/types';
 
-const template = (key: string) => t(`routes.Show.${key}`)
+const template = (key: string) => t(`routes.Show.${key}`);
 const ShowRouter: AppRouteRecordRaw = {
   path: '/show',
   name: 'Show',
@@ -8,7 +8,7 @@ const ShowRouter: AppRouteRecordRaw = {
   children: [
     {
       path: '',
-      redirect: '/show/blogs/1',
+      redirect: '/show/blogs/1'
     },
     {
       path: 'blogs/:pageNum',
@@ -63,8 +63,8 @@ const ShowRouter: AppRouteRecordRaw = {
         title: template('About'),
         auth: true
       }
-    },
-  ],
-}
+    }
+  ]
+};
 
-export default ShowRouter
+export default ShowRouter;

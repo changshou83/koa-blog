@@ -9,5 +9,5 @@ import type { RouteParamValueRaw } from 'vue-router';
 export const routeParamsChange =
   (type: string) => (value: RouteParamValueRaw) =>
     router.push({
-      params: { [type]: value },
+      params: { [type]: value }
     });

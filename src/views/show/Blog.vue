@@ -28,6 +28,7 @@ watchEffect(() => {
 }, {
   flush: 'post'
 })
+// TODO:post 会有个bug：退出登录之后会进行一次失败的请求
 
 const checkDetail = (id: number) => routePathToPage(`/details/${id}`)()
 </script>

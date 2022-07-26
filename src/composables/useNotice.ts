@@ -1,7 +1,7 @@
 import { notification } from 'ant-design-vue';
 import type {
   NotificationInstance,
-  NotificationArgsProps,
+  NotificationArgsProps
 } from 'ant-design-vue/lib/notification';
 
 /**
