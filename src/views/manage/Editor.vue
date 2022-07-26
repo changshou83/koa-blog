@@ -144,18 +144,21 @@ if(isUpdate) {
   overflow: hidden;
   color: #333;
 }
+
 .editor-toolbar {
   width: 1350px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
 }
+
 .content {
   height: calc(100% - 40px);
   background-color: rgb(245, 245, 245);
   overflow-y: auto;
   position: relative;
 }
+
 .editor-container {
   width: 850px;
   margin: 30px auto 50px auto;
@@ -165,15 +168,18 @@ if(isUpdate) {
   border: 1px solid #e8e8e8;
   box-shadow: 0 2px 10px rgb(0 0 0 / 12%);
 }
+
 .editor-text-area {
   min-height: 900px;
   margin-top: 20px;
 }
+
 .actions {
   background-color: rgb(245, 245, 245);
   text-align: center;
   padding: 8px;
 }
+
 .actions > * {
   margin: 40px;
   margin-top: 0;

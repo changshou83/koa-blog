@@ -47,6 +47,7 @@ const checkDetail = (id: number) => emit('checkDetail', id)
   transform: scale(1.1);
   transition: all .1s linear;
 }
+
 .card:hover :deep(.ant-card-body) {
   width: 58%;
   margin-left: -8px;
@@ -57,16 +58,19 @@ const checkDetail = (id: number) => emit('checkDetail', id)
   flex: 1;
   overflow: hidden;
 }
+
 :deep(.ant-card-body) {
   width: 55%;
   transition: all .1s linear;
 }
+
 .headImg {
   object-fit: cover;
   width: 100%;
   height: 200px;
   transition: all .1s linear;
 }
+
 .meta-title {
   font-size: 2em;
   font-weight: bold;

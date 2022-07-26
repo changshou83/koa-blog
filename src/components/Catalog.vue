@@ -39,6 +39,7 @@ const scrollToTop = (id: string = '') => {
   color: #333;
   list-style: none;
 }
+
 .catalog-container {
   display: block;
   position: relative;
@@ -47,9 +48,11 @@ const scrollToTop = (id: string = '') => {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .catalog-container:hover {
   cursor: pointer;
 }
+
 .catalog-tag {
   padding: 8px;
   width: 90%;
@@ -61,10 +64,12 @@ const scrollToTop = (id: string = '') => {
   opacity: 0.3;
   transition: all 0.1s ease-in-out;
 }
+
 .catalog-tag:hover {
   background-color: #f7f8fa;
   border-radius: 4px;
 }
+
 .sub-list {
   margin: 0;
   padding: 0;
@@ -74,14 +79,17 @@ const scrollToTop = (id: string = '') => {
   font-weight: 400;
   color: #000;
 }
+
 .d1 > .catalog-container {
   margin: 0;
   padding: 0;
   padding-left: 11px;
 }
+
 .d2 > .catalog-container {
   padding-left: 26px;
 }
+
 .d3 > .catalog-container {
   padding-left: 41px;
 }
@@ -97,6 +105,7 @@ const scrollToTop = (id: string = '') => {
   background-color: #1e80ff;
   border-radius: 0 4px 4px 0;
 }
+
 .catalog-active > .catalog-tag {
   color: #007fff;
   opacity: 0.9;

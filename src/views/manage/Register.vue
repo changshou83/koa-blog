@@ -47,7 +47,7 @@ const handleSubmit: FormProps['onSubmit'] = async () => {
       duration: 0.5
     })
     setTimeout(toLogin, 1000)
-  } catch(err: any) {
+  } catch (err: any) {
     formState.username = '';
     formState.password = '';
     Message.error({
@@ -61,32 +61,29 @@ const handleSubmit: FormProps['onSubmit'] = async () => {
 
 <template>
   <main class="register">
-    <a-form
-      class="register-form shadow"
-      layout="vertical"
-      :model="formState"
-      @submit="handleSubmit"
-    >
+    <a-form class="register-form shadow" layout="vertical" :model="formState" @submit="handleSubmit">
       <a-form-item>
-        <h2 class="form-title">{{template("Title")}}</h2>
+        <h2 class="form-title">{{ template("Title") }}</h2>
       </a-form-item>
       <a-form-item v-bind="validateInfos.username">
-        <a-input class="input-username" v-model:value="formState.username" :placeholder="LoginTemplate('PlaceHolder.Username')">
-          <template #prefix><UserOutlined style="color: rgba(0, 0, 0, 0.25)" /></template>
+        <a-input class="input-username" v-model:value="formState.username"
+          :placeholder="LoginTemplate('PlaceHolder.Username')">
+          <template #prefix>
+            <UserOutlined style="color: rgba(0, 0, 0, 0.25)" />
+          </template>
         </a-input>
       </a-form-item>
       <a-form-item v-bind="validateInfos.password">
-        <a-input-password class="input-password" v-model:value="formState.password" type="password" :placeholder="LoginTemplate('PlaceHolder.Password')">
-          <template #prefix><LockOutlined style="color: rgba(0, 0, 0, 0.25)" /></template>
+        <a-input-password class="input-password" v-model:value="formState.password" type="password"
+          :placeholder="LoginTemplate('PlaceHolder.Password')">
+          <template #prefix>
+            <LockOutlined style="color: rgba(0, 0, 0, 0.25)" />
+          </template>
         </a-input-password>
       </a-form-item>
       <a-form-item>
-        <a-button
-          html-type="submit"
-          block
-          :disabled="!canRegister"
-        >
-          {{template("ButtonText")}}
+        <a-button html-type="submit" block :disabled="!canRegister">
+          {{ template("ButtonText") }}
         </a-button>
       </a-form-item>
     </a-form>
@@ -101,14 +98,16 @@ const handleSubmit: FormProps['onSubmit'] = async () => {
   display: grid;
   place-content: center;
 }
+
 .register-form {
-  width: 350px;
+  width: 330px;
   padding: 20px;
   background-color: white;
   border-radius: 8px;
   border: 1px solid #CFD8DC;
   background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
 }
+
 .form-title {
   text-align: center;
   font-weight: 200;
@@ -116,6 +115,7 @@ const handleSubmit: FormProps['onSubmit'] = async () => {
   margin-top: 10px;
   color: #34495e;
 }
+
 .register-form .input-username,
 .register-form .input-password,
 .register-form button {
@@ -126,18 +126,12 @@ const handleSubmit: FormProps['onSubmit'] = async () => {
   border-radius: 5px;
   outline: 0;
 }
+
 .register-form button {
   font-size: 14px;
   font-weight: 200;
   cursor: pointer;
   padding: 0 20px;
-}
-.register-form {
-  width: 330px;
-  padding: 20px;
-  background-color: white;
-  border-radius: 8px;
-  border: 1px solid #CFD8DC;
 }
 </style>
 

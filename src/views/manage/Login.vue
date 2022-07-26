@@ -48,7 +48,7 @@ const handleSubmit: FormProps['onSubmit'] = async () => {
       duration: 0.5
     })
     setTimeout(toArticlePage, 1000)
-  } catch(err: any) {
+  } catch (err: any) {
     formState.password = '';
     Message.error({
       message: template('Message.Login.ErrorText.message'),
@@ -63,37 +63,35 @@ const toRegister = routePathToPage('/manage/register');
 
 <template>
   <main class="login">
-    <a-form
-      class="login-form shadow"
-      layout="vertical"
-      :model="formState"
-      @submit="handleSubmit"
-    >
+    <a-form class="login-form shadow" layout="vertical" :model="formState" @submit="handleSubmit">
       <a-form-item>
-        <h2 class="form-title">{{template('Title')}}</h2>
+        <h2 class="form-title">{{ template('Title') }}</h2>
       </a-form-item>
       <a-form-item v-bind="validateInfos.username">
-        <a-input class="input-username" v-model:value="formState.username" :placeholder="template('PlaceHolder.Username')">
-          <template #prefix><UserOutlined style="color: rgba(0, 0, 0, 0.25)" /></template>
+        <a-input class="input-username" v-model:value="formState.username"
+          :placeholder="template('PlaceHolder.Username')">
+          <template #prefix>
+            <UserOutlined style="color: rgba(0, 0, 0, 0.25)" />
+          </template>
         </a-input>
       </a-form-item>
       <a-form-item v-bind="validateInfos.password">
-        <a-input-password class="input-password" v-model:value="formState.password" type="password" :placeholder="template('PlaceHolder.Password')">
-          <template #prefix><LockOutlined style="color: rgba(0, 0, 0, 0.25)" /></template>
+        <a-input-password class="input-password" v-model:value="formState.password" type="password"
+          :placeholder="template('PlaceHolder.Password')">
+          <template #prefix>
+            <LockOutlined style="color: rgba(0, 0, 0, 0.25)" />
+          </template>
         </a-input-password>
       </a-form-item>
       <a-form-item>
-        <a-button
-          class="submit-button"
-          html-type="submit"
-          block
-          :disabled="!canLogin"
-        >
-          {{template('ButtonText')}}
+        <a-button class="submit-button" html-type="submit" block :disabled="!canLogin">
+          {{ template('ButtonText') }}
         </a-button>
       </a-form-item>
       <a-form-item>
-        <div @click="toRegister" class="to-register"><p>{{template('toRegister')}}</p></div>
+        <div @click="toRegister" class="to-register">
+          <p>{{ template('toRegister') }}</p>
+        </div>
       </a-form-item>
     </a-form>
   </main>
@@ -107,6 +105,7 @@ const toRegister = routePathToPage('/manage/register');
   display: grid;
   place-content: center;
 }
+
 .login-form {
   width: 350px;
   padding: 20px;
@@ -115,6 +114,7 @@ const toRegister = routePathToPage('/manage/register');
   border: 1px solid #CFD8DC;
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
+
 .form-title {
   text-align: center;
   font-weight: 200;
@@ -122,6 +122,7 @@ const toRegister = routePathToPage('/manage/register');
   margin-top: 10px;
   color: #34495e;
 }
+
 .login-form .input-username,
 .login-form .input-password,
 .login-form button {
@@ -132,12 +133,14 @@ const toRegister = routePathToPage('/manage/register');
   border-radius: 5px;
   outline: 0;
 }
+
 .login-form button {
   font-size: 14px;
   font-weight: 200;
   cursor: pointer;
   padding: 0 20px;
 }
+
 .to-register {
   color: #1890ff;
   text-align: center;

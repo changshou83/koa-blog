@@ -92,6 +92,7 @@ useWindowEvent('copy', (event) => addCopyrightInfo(event as ClipboardEvent))
   background-color: rgba(190,190,190,0.2);
   margin-bottom: 20px;
 }
+
 :deep(.ant-skeleton-image) {
   background-color: transparent;
 }
@@ -105,6 +106,7 @@ useWindowEvent('copy', (event) => addCopyrightInfo(event as ClipboardEvent))
   position: relative;
   min-height: 95vh;
 }
+
 .head-img {
   width: 100%;
   height: 300px;
@@ -116,6 +118,7 @@ useWindowEvent('copy', (event) => addCopyrightInfo(event as ClipboardEvent))
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
+
 .title {
   margin-top: 300px;
   height: 80px;
@@ -123,15 +126,18 @@ useWindowEvent('copy', (event) => addCopyrightInfo(event as ClipboardEvent))
   font-weight: bold;
   font-size: 2.8em;
 }
+
 .type {
   margin-top: 320px;
   position: absolute;
   top: 10px;
   right: 10px;
 }
+
 .intro {
   margin-bottom: 20px;
 }
+
 .content {
   padding: 20px;
   font-size: 1.3em;
@@ -147,6 +153,7 @@ useWindowEvent('copy', (event) => addCopyrightInfo(event as ClipboardEvent))
   padding-left: 40px;
   margin-top: -10px;
 }
+
 .catalog-title {
   font-weight: 500;
   padding: 0.5rem 0;
@@ -156,6 +163,7 @@ useWindowEvent('copy', (event) => addCopyrightInfo(event as ClipboardEvent))
   color: #1d2129;
   border-bottom: 1px solid #c4c5c9;
 }
+
 .catalog-list {
   max-height: 400px;
   overflow: auto;
