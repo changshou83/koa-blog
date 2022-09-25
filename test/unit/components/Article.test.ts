@@ -1,11 +1,14 @@
-import { render, screen, fireEvent } from '@testing-library/vue';
+import { render, screen } from '@testing-library/vue';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import { createPinia } from 'pinia';
 import routes from '@/routes/routes';
 import Article from '@/views/manage/Article.vue';
 
 let router;
 
 beforeEach(async () => {
+  const app = createApp({});
+  app.use(createPinia());
   router = createRouter({
     history: createWebHistory(),
     routes: routes as RouteRecordRaw[]

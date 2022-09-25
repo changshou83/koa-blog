@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/vue';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import routes from '@/routes/routes';
+import i18n from '@/locales/index';
 import Detail from '@/views/details/index.vue';
 
 let router;
@@ -17,22 +18,19 @@ beforeEach(async () => {
 
 describe('Detail', () => {
   it('render article detail correctly', async () => {
+    const text = ['Default Title', 'Default Introduction', 'Default Content'];
     render(Detail, {
       global: {
-        plugins: [router]
+        plugins: [router, i18n]
       }
     });
 
-    const title = await screen.findByText('前端工程师的难题');
-    const tag = await screen.findByText('book');
-    const content = await screen.findByText(
-      '前端工程师的难题不止技术难题，更重要的是工程难题'
-    );
+    const title = await screen.findByText(text[0]);
+    const intro = await screen.findByText(text[1]);
+    const content = await screen.findByText(text[2]);
 
-    expect(title.innerHTML).toBe('前端工程师的难题');
-    expect(tag.innerHTML).toBe('book');
-    expect(content.innerHTML).toBe(
-      '前端工程师的难题不止技术难题，更重要的是工程难题'
-    );
+    expect(title.innerHTML).toBe(text[0]);
+    expect(intro.innerHTML).toBe(text[1]);
+    expect(content.innerHTML).toBe(text[2]);
   });
 });

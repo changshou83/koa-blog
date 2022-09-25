@@ -1,19 +1,5 @@
 import CardList from '@/components/CardList.vue';
 import { mount } from '@vue/test-utils';
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import routes from '@/routes/routes';
-
-let router;
-
-beforeEach(async () => {
-  router = createRouter({
-    history: createWebHistory(),
-    routes: routes as RouteRecordRaw[]
-  });
-
-  router.push('/show/blogs/1');
-  await router.isReady();
-});
 
 const list = [
   {
@@ -36,19 +22,5 @@ describe('ButtonGroup', () => {
     });
 
     expect(wrapper.findAll('a-card')).toHaveLength(1);
-  });
-  it('check article detail', async () => {
-    const wrapper = mount(CardList, {
-      props: {
-        cardRecords: list,
-        checkDetail: (id: number) => router.push(`/details/${id}`)
-      },
-      global: {
-        plugins: [router]
-      }
-    });
-
-    await wrapper.find('a-card').trigger('click');
-    expect(wrapper.emitted()).toHaveProperty('checkDetail');
   });
 });

@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.node.json",
-  "include": ["test/**/*", "src/composables/**/*", "src/utils/**/*"],
+  "include": ["test/**/*", "src/**/*"],
   "compilerOptions": {
     "composite": true,
     "lib": [],

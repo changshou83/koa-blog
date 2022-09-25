@@ -1,11 +1,14 @@
 import Pagination from '@/components/Pagination.vue';
-import { render, fireEvent } from '@testing-library/vue';
+import { render } from '@testing-library/vue';
+import { createPinia } from 'pinia';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import routes from '@/routes/routes';
 
 let router;
 
 beforeEach(async () => {
+  const app = createApp({});
+  app.use(createPinia());
   router = createRouter({
     history: createWebHistory(),
     routes: routes as RouteRecordRaw[]
@@ -16,7 +19,7 @@ beforeEach(async () => {
 });
 
 describe('Pagination', () => {
-  it('render a-pagination', () => {
+  it('render a-pagination', async () => {
     const { html } = render(Pagination, {
       props: {
         total: 2,
