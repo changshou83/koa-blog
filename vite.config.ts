@@ -10,6 +10,7 @@ import {
 } from 'vite-plugin-style-import';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { vueI18n } from '@intlify/vite-plugin-vue-i18n';
+import Unocss from 'unocss/vite';
 import { fileURLToPath, URL } from 'url';
 import { resolve, dirname } from 'node:path';
 
@@ -28,7 +29,7 @@ export default defineConfig({
     }),
     AutoImport({
       include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/],
-      imports: ['vue', 'vue-router', 'pinia', 'vue-i18n'],
+      imports: ['vue', 'vue-router', 'pinia', 'vue-i18n', '@vueuse/core'],
       dirs: [
         'src/composables',
         'src/composables/utils',
@@ -43,6 +44,7 @@ export default defineConfig({
       vueTemplate: true,
       resolvers: [AntDV()]
     }),
+    Unocss(),
     // 按需加载
     createStyleImportPlugin({
       resolves: [AndDesignVueResolve()],

@@ -16,6 +16,8 @@
     "postinstall": "husky install"
   },
   "dependencies": {
+    "@iconify-json/carbon": "^1.1.8",
+    "@vueuse/core": "^9.2.0",
     "@wangeditor/editor": "^5.1.1",
     "@wangeditor/editor-for-vue": "^5.1.11",
     "ant-design-vue": "^3.2.6",
@@ -24,6 +26,7 @@
     "keymaster": "^1.6.2",
     "pinia": "^2.0.16",
     "qiniu-js": "^3.4.1",
+    "unocss": "^0.45.22",
     "vue": "^3.2.25",
     "xss": "^1.0.13"
   },
